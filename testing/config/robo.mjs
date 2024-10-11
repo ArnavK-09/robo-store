@@ -8,5 +8,8 @@ export default {
 		intents: ['Guilds', 'GuildMessages']
 	},
 	plugins: [],
-	type: 'robo'
+	type: 'robo',
+	experimental: {
+		userInstall: true
+	}
 }

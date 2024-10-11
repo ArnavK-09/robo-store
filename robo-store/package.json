@@ -59,6 +59,7 @@
 		}
 	},
 	"dependencies": {
+		"@typegoose/typegoose": "^12.8.0",
 		"cookie-parser": "^1.4.7",
 		"discord-oauth2": "^2.12.1",
 		"express": "^4.21.1",
@@ -66,6 +67,9 @@
 		"h3": "^1.13.0",
 		"http": "^0.0.1-security",
 		"listhen": "^1.9.0",
+		"mongoose": "^8.7.1",
+		"pagination.djs": "^4.0.16",
+		"typeorm": "^0.3.20",
 		"vite": "^5.4.8"
 	}
 }

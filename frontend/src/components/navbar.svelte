@@ -1,5 +1,5 @@
 <script>
-    import { isHamburgerMenuOpen } from "@/store/basics";
+    import { isHamburgerMenuOpen, storeDetails } from "@/store/basics";
 </script>
 
 <nav
@@ -10,7 +10,7 @@
     >
         <div>
             <a href="/" class="logo-text tracking-tighter text-3xl uppercase"
-                >Store</a
+                >{$storeDetails.store_name}</a
             >
         </div>
         <div

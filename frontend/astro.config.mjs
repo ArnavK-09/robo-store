@@ -10,5 +10,5 @@ export default defineConfig({
   output: 'static', integrations: [tailwind(), svelte()], redirects: {
     '/home': '/'
   },
-  outDir: '../robo-store/seed/_root/.robo.store',
+  outDir: '../testing/.robo.store'// '../robo-store/seed/_root/.robo.store',
 });

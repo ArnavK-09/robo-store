@@ -14,13 +14,23 @@ import { ViewTransitions } from "astro:transitions";
 		<ViewTransitions transition:animate="fade" />
 		<script>
 			import { User } from "@/store/user";
-			const response = await fetch(
-				"/api/@me",
-			);
-			const data = await response.json();
-			console.log(data)
-			if (response.status == 200) {
-				User.set(data);
+			import { storeDetails } from "@/store/basics";
+			{
+				const response = await fetch("/api/@me");
+				if (response.status == 200) {
+				const data = await response.json();
+					User.set(data);
+				}
+			}
+			{
+				const response = await fetch(
+					"/api/store",
+				);
+				const data = await response.json();
+				console.warn(data)
+				if (response.status == 200) {
+					storeDetails.set(data);
+				}
 			}
 		</script></head
 	>

@@ -1,18 +1,20 @@
 /**
  * Imports required
  */
-import { createApp, createRouter, defineEventHandler, deleteCookie, fromNodeMiddleware, getCookie, getQuery, handleCors, sendRedirect, serveStatic, setCookie, setResponseHeader, setResponseStatus, toNodeListener, useBase, useSession } from "h3";
+import { createApp, createRouter, defineEventHandler, deleteCookie, fromNodeMiddleware, getCookie, getQuery, getRouterParam, getValidatedRouterParams, handleCors, sendRedirect, serveStatic, setCookie, setResponseHeader, setResponseStatus, toNodeListener, useBase, useSession } from "h3";
 import http from "http";
-import { pluginLogger } from "./events/_start";
-import DiscordOauth2, { TokenRequestResult } from 'discord-oauth2';
+import { options, pluginLogger } from "./events/_start";
+import DiscordOauth2 from 'discord-oauth2';
 import Portal from "robo.js/dist/core/portal";
 import { portal } from "robo.js";
 import { stat, readFile } from "node:fs/promises";
 import { join } from "path";
+import mongoose from "mongoose";
+import { Product } from "./database";
 
 // Discord Oauth 
 const oauth = new DiscordOauth2({
-    redirectUri: "https://musical-space-dollop-g66jw4j4vw6h9wrw-3000.app.github.dev/api/callback",
+    redirectUri: `https://${options.domain}/api/callback`,
 });
 
 /**
@@ -138,6 +140,42 @@ api.get("/callback", defineEventHandler(async (e) => {
 }))
 
 /**
+ * Store Router
+*/
+const store = createRouter();
+app.use("/api/store", store.handler);
+
+// GET /api/store 
+store.get('/', defineEventHandler(e => {
+
+    return {
+        owner_id: options.owner_id,
+        store_name: options.store_name,
+        categories: options.categories,
+        domain: options.domain
+    }
+}))
+
+// GET /api/store/products 
+store.get('/products', defineEventHandler(async e => {
+    const allProducts = await Product.find();
+    return allProducts
+}))
+
+// GET /api/store/products/:id
+store.get('/products/:id', defineEventHandler(async e => {
+    const id = getRouterParam(e, "id")
+    const product = await Product.findOne({ _id: id }).exec().catch(() => null);
+    if (!product) {
+        setResponseStatus(e, 404);
+        return {
+            message: 'Product not found'
+        }
+    }
+    return product
+}))
+
+/**
  * Discord profile Router
 */
 const me = createRouter();
@@ -182,8 +220,8 @@ me.get(
         deleteCookie(e, "refresh_token");
 
 
-       await oauth.revokeToken(access_token);
-       return sendRedirect(e, "/");
+        await oauth.revokeToken(access_token);
+        return sendRedirect(e, "/");
     }),
 );
 
@@ -191,6 +229,7 @@ me.get(
  * Function to start server
  */
 export async function initPlugin() {
+    const DB = await mongoose.connect('mongodb://127.0.0.1:27017/test');
     const server = http.createServer(toNodeListener(app));
     server.listen(3000)
 }
