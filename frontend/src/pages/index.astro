@@ -1,6 +1,7 @@
 ---
 import Shop from "@/components/shop.astro";
 import Layout from "@/layouts/default.astro";
+const data = Astro.locals;
 ---
 
 <Layout>
@@ -22,7 +23,7 @@ import Layout from "@/layouts/default.astro";
 						.fill(0)
 						.map(() => (
 							<div class="animate-marquee whitespace-nowrap text-black !text-xl font-bold uppercase tracking-tighter mx-0 w-full">
-								ON VACATION SALE
+								ON VACATION SALE {data.title}
 							</div>
 						))
 				}

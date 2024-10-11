@@ -7,7 +7,8 @@ import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'static', integrations: [tailwind(), svelte()],  redirects: {
+  output: 'static', integrations: [tailwind(), svelte()], redirects: {
     '/home': '/'
-  }
+  },
+  outDir: '../robo-store/seed/_root/.robo.store',
 });

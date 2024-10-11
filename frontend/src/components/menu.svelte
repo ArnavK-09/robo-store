@@ -22,7 +22,7 @@
                 {/each}
             </div>
             <a
-                href={`/auth`}
+                href={`/api/login`}
                 class="select-none w-full mt-4 px-2 uppercase bg-gradient-to-br from-blue-600 to-blue-700 grid place-items-center text-2xl overflow-hidden font-black text-white text-center rounded-sm"
             >
                 Login
