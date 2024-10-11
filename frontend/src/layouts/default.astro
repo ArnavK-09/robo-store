@@ -1,7 +1,7 @@
 ---
 import Navbar from "@/components/navbar.svelte";
 import Menu from "@/components/menu.svelte";
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <html lang="en">
@@ -10,26 +10,36 @@ import { ViewTransitions } from 'astro:transitions';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Frontend</title>
-		<ViewTransitions transition:animate="fade"/>
-	</head>
+		<title>STORE</title>
+		<ViewTransitions transition:animate="fade" />
+		<script>
+			import { User } from "@/store/user";
+			const response = await fetch(
+				"/api/@me",
+			);
+			const data = await response.json();
+			console.log(data)
+			if (response.status == 200) {
+				User.set(data);
+			}
+		</script></head
+	>
+
 	<body class="overflow-x-hidden min-h-screen bg-black text-white">
 		<header
 			class="fixed overflow-x-hidden w-screen grid place-items-center top-1 z-[500]"
 		>
 			<Navbar client:load />
 		</header>
-		<Menu client:idle />
+		<Menu client:load />
 		<main class="pt-[100px] pb-20">
 			<slot />
 		</main>
-	</body>
-	<style is:global>
+	</body><style is:global>
 		@import url("https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap");
 
 		* {
 			font-family: "ADLaM Display", system-ui;
-
 			font-style: normal;
 		}
 
