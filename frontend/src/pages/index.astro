@@ -1,5 +1,5 @@
 ---
-import Shop from "@/components/shop.astro";
+import Shop from "@/components/shop.svelte";
 import Layout from "@/layouts/default.astro";
 ---
 
@@ -21,7 +21,7 @@ import Layout from "@/layouts/default.astro";
 					new Array(50)
 						.fill(0)
 						.map(() => (
-							<div class="animate-marquee whitespace-nowrap text-black !text-xl font-bold uppercase tracking-tighter mx-0 w-full">
+							<div class="animate-marquee select-none whitespace-nowrap text-black !text-xl font-bold uppercase tracking-tighter mx-0 w-full">
 								ON VACATION SALE
 							</div>
 						))
@@ -34,6 +34,6 @@ import Layout from "@/layouts/default.astro";
 		</section>
 
 		<section id="shop" class="my-10">
-			<Shop />
+			<Shop client:idle/>
 		</section>
 </Layout>

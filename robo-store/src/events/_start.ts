@@ -10,6 +10,7 @@ export interface PluginOptions {
 	store_name: string;
 	categories: string[];
 	domain: string;
+	slogan?: string;
 }
 
 export let options: PluginOptions;

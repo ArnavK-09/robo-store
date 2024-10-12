@@ -1,8 +1,8 @@
 ---
-import Shop from "@/components/shop.astro";
+import Shop from "@/components/shop.svelte";
 import Layout from "@/layouts/default.astro";
 ---
 
 <Layout>
-    <Shop />
+    <Shop client:idle />
 </Layout>

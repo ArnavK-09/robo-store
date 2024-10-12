@@ -11,10 +11,9 @@ import { stat, readFile } from "node:fs/promises";
 import { join } from "path";
 import mongoose from "mongoose";
 import { Product } from "./database";
-
 // Discord Oauth 
 const oauth = new DiscordOauth2({
-    redirectUri: `https://${options.domain}/api/callback`,
+    // redirectUri: `https://${options.domain}/api/callback`,
 });
 
 /**
@@ -146,12 +145,11 @@ const store = createRouter();
 app.use("/api/store", store.handler);
 
 // GET /api/store 
-store.get('/', defineEventHandler(e => {
-
+store.get('/', defineEventHandler(async e => {
     return {
         owner_id: options.owner_id,
         store_name: options.store_name,
-        categories: options.categories,
+        categories: await Product.distinct('category').exec(),
         domain: options.domain
     }
 }))
@@ -160,6 +158,12 @@ store.get('/', defineEventHandler(e => {
 store.get('/products', defineEventHandler(async e => {
     const allProducts = await Product.find();
     return allProducts
+}))
+
+// GET /api/store/categories 
+store.get('/categories', defineEventHandler(async e => {
+    const allCategories = await Product.distinct('category').exec();
+    return allCategories
 }))
 
 // GET /api/store/products/:id
