@@ -11,5 +11,6 @@ export default {
 	type: 'robo',
 	experimental: {
 		userInstall: true
-	}
+	},
+	lol: true
 }

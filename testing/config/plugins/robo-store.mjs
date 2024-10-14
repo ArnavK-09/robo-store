@@ -1,3 +1,8 @@
+// @ts-check
+
+/**
+ * @type {import('robo-store/src/events/_start').PluginOptions}
+ **/
 export default {
     mongo_uri: 'mongodb://127.0.0.1:27017/test',
     owner_id: 'j',
