@@ -1,6 +1,6 @@
 export default {
-    mongo_uri : "mongodb://127.0.0.1:27017/test",
-    owner_id: "",
+    mongo_uri : "mongodb+srv://admin:admin@database.68cfyzy.mongodb.net/Database?retryWrites=true&w=majority&appName=Database",
+    owner_id: "739454321661313025",
     store_name: "Robo Max",
     domain: "github.dev",
     introduction: "Helloo",
