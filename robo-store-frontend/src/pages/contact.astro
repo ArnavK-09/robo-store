@@ -1,0 +1,20 @@
+---
+import Loading from "@/components/loading.svelte";
+import Layout from "@/layouts/default.astro";
+---
+
+<Layout title="Contact">
+  <section class="overflow-hidden grid place-items-center">
+    <Loading />
+  </section>
+  <script>
+    import { storeDetails } from "@/store/basics";
+    window.onload = function () {
+      const invite =
+        storeDetails.value.invite ??
+        `https://discord.com/users/${storeDetails.value.owner_id}`;
+
+      window.open(invite, "_blank");
+    };
+  </script>
+</Layout>

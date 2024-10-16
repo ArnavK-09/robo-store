@@ -1,0 +1,1 @@
+import{s as o}from"./basics.CvgS8P50.js";import"./hoisted.mdOadsyP.js";import"./user.BfFbXKBQ.js";window.onload=function(){const i=o.value.invite??`https://discord.com/users/${o.value.owner_id}`;window.open(i,"_blank")};

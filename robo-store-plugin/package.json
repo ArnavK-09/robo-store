@@ -1,0 +1,65 @@
+{
+	"name": "robo-store",
+	"description": "",
+	"version": "0.0.1",
+	"type": "module",
+	"private": false,
+	"keywords": [
+		"bot",
+		"discord",
+		"discord.js",
+		"robo",
+		"robo.js",
+		"typescript"
+	],
+	"main": ".robo/build/index.js",
+	"license": "MIT",
+	"author": "ArnavK-09 <arnavkaushal09@gmail.com> (https://github.com/ArnavK-09)",
+	"files": [
+		".robo/",
+		"seed",
+		"src/",
+		"LICENSE",
+		"README.md"
+	],
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
+	},
+	"scripts": {
+		"build": "robo build plugin",
+		"dev": "robo build plugin --watch",
+		"lint": "eslint -c config/eslint.mjs .",
+		"fmt": "prettier --write .",
+		"prepublishOnly": "robo build plugin"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.12.0",
+		"@swc/core": "^1.7.26",
+		"@types/node": "^22.7.5",
+		"discord.js": "^14.16.3",
+		"eslint": "^9.12.0",
+		"globals": "^15.11.0",
+		"prettier": "^3.3.3",
+		"robo.js": "^0.10.19",
+		"typescript": "^5.6.3",
+		"typescript-eslint": "^8.8.1"
+	},
+	"peerDependencies": {
+		"robo.js": "^0.10.1"
+	},
+	"peerDependenciesMeta": {
+		"robo.js": {
+			"optional": false
+		}
+	},
+	"dependencies": {
+		"discord-oauth2": "^2.12.1",
+		"extensionless": "^1.9.9",
+		"h3": "^1.13.0",
+		"http": "^0.0.1-security",
+		"mongoose": "^8.7.1",
+		"pagination.djs": "^4.0.16",
+		"vite": "^5.4.8"
+	}
+}

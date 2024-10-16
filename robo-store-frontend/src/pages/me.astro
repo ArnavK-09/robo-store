@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/default.astro";
+import Account from "@/components/account.svelte";
+---
+
+<Layout title="Your Account">
+  <section class="overflow-x-hidden w-screen px-4 mt-5">
+    <div class="select-none">
+      <h2
+        class="tracking-tight text-center font-bold text-4xl md:text-5xl lg:text-6xl"
+      >
+        Account
+      </h2>
+    </div>
+
+    <div>
+      <Account client:load />
+    </div>
+  </section>
+</Layout>
