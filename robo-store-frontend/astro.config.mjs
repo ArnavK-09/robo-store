@@ -10,5 +10,8 @@ export default defineConfig({
   redirects: {
     "/home": "/",
   },
-  outDir: ["../robo-store-demo/.robo.store",  '../robo-store-plugin/seed/_root/.robo.store'][1],
+  outDir: [
+    "../robo-store-demo/.robo.store",
+    "../robo-store-plugin/seed/_root/.robo.store",
+  ][0],
 });

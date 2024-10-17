@@ -5,5 +5,5 @@ export default {
     domain: "github.dev",
     introduction: "Helloo",
     slogan: "SUP BUDDY :)",
-
+    hero_image: 'https://wallpaperaccess.com/full/6301384.jpg'
 }

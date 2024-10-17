@@ -212,11 +212,10 @@ me.get(
 me.get(
 	'/logout',
 	defineEventHandler(async (e) => {
-		checkAuth(e)
 		const access_token = getCookie(e, 'access_token')!
 		deleteCookie(e, 'access_token')
 		deleteCookie(e, 'refresh_token')
-		await oauth.revokeToken(access_token)
+		if(access_token) await oauth.revokeToken(access_token);
 		return sendRedirect(e, '/')
 	})
 )

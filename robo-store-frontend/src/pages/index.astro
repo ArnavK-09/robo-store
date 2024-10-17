@@ -3,21 +3,13 @@ import Introduction from "@/components/introduction.svelte";
 import Tagline from "@/components/tagline.svelte";
 import Shop from "@/components/shop.svelte";
 import Layout from "@/layouts/default.astro";
+import Hero from "@/components/hero.svelte";
 ---
 
 <Layout>
-  <section
-    class="bg-origin-border select-none mt-1 mb-5 bg-repeat bg-cover w-[96vw] md:aspect-[16/7] aspect-[2/1] block mx-auto bg-[url('https://wallpaperaccess.com/full/6301384.jpg')] rounded-xl"
-    id="hero"
-  >
-  </section>
+  <Hero client:idle />
 
-  <section
-    id="tagline"
-    class="w-[96vw] text-center block mx-auto relative h-[48px] rounded-2xl bg-white overflow-hidden px-3 py-1.5"
-  >
-    <Tagline client:load />
-  </section>
+  <Tagline client:load />
 
   <Introduction client:load />
 

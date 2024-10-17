@@ -1,6 +1,17 @@
-<script>
+<script lang="ts">
   import { storeDetails, storeProducts } from "@/store/basics";
   import Loading from "@/components/loading.svelte";
+
+  const allOptions = ["All", ...$storeDetails.categories];
+  let selectedOption: allOptions = allOptions[0];
+
+  let filteredProducts = $storeProducts;
+
+  $: {
+    filteredProducts = $storeProducts.filter((x) =>
+      x.categories.includes(selectedOption),
+    );
+  }
 </script>
 
 <div class="overflow-x-hidden w-screen px-4">
@@ -9,11 +20,14 @@
       SHOP
     </h2>
     <div class="mt-4 flex gap-4 flex-wrap break-words">
-      {#each ["All", ...$storeDetails.categories] as x}
-        <strong
-          class="uppercase tracking-tighter duration-[300ms] text-xl md:text-3xl font-medium transition ease-in-out cursor-pointer hover:text-green-600 text-white/20"
-          >{x}</strong
-        >
+      {#each allOptions as x}
+        {@const isSelected = selectedOption.toLowerCase() == x.toLowerCase()}
+        <button on:click={() => (selectedOption = x)}>
+          <strong
+            class={`uppercase tracking-tighter duration-[300ms] text-xl md:text-3xl font-medium transition ease-in-out cursor-pointer ${isSelected ? "text-green-600 hover:text-green-500" : "hover:text-green-600 text-white/30"}`}
+            >{x}</strong
+          >
+        </button>
       {/each}
     </div>
     <section
@@ -22,7 +36,7 @@
       {#if $storeProducts.length == 0}
         <Loading />
       {/if}
-      {#each $storeProducts as product (product._id)}
+      {#each filteredProducts as product (product._id)}
         {@const finalPrice = Math.floor(
           product.price - (product.discount / product.price) * 100,
         )}

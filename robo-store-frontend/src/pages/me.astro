@@ -1,6 +1,10 @@
 ---
 import Layout from "@/layouts/default.astro";
 import Account from "@/components/account.svelte";
+import { User } from "@/store/user";
+if (!User) {
+  Astro.redirect("/");
+}
 ---
 
 <Layout title="Your Account">

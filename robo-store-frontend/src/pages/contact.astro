@@ -9,12 +9,12 @@ import Layout from "@/layouts/default.astro";
   </section>
   <script>
     import { storeDetails } from "@/store/basics";
-    window.onload = function () {
-      const invite =
-        storeDetails.value.invite ??
-        `https://discord.com/users/${storeDetails.value.owner_id}`;
 
-      window.open(invite, "_blank");
-    };
+    const invite =
+      storeDetails.value.invite ??
+      `https://discord.com/users/${storeDetails.value.owner_id}`;
+
+    window.open(invite, "_blank");
+    window.location.href = window.location.origin;
   </script>
 </Layout>

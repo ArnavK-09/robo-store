@@ -1,6 +1,7 @@
 ---
 import Navbar from "@/components/navbar.svelte";
 import Menu from "@/components/menu.svelte";
+import Intiailizing from "@/components/intiailizing.svelte";
 import Head from "@/components/head.svelte";
 import { ViewTransitions } from "astro:transitions";
 
@@ -13,28 +14,40 @@ const { title = "Home" } = Astro.props;
     <ViewTransitions transition:animate="fade" />
     <script>
       import { User } from "@/store/user";
-      import { storeDetails, storeProducts } from "@/store/basics";
-      {
+      import { storeDetails, storeProducts, isLoading } from "@/store/basics";
+
+      const fetchUser = new Promise(async (resolve) => {
         const response = await fetch("/api/@me");
         if (response.ok) {
           const data = await response.json();
           User.set(data);
         }
-      }
-      {
+        resolve(response);
+      });
+      const fetchStore = new Promise(async (resolve) => {
         const response = await fetch("/api/store");
-        const data = await response.json();
         if (response.ok) {
+          const data = await response.json();
           storeDetails.set(data);
         }
-      }
-      {
+        resolve(response);
+      });
+
+      const fetchProducts = new Promise(async (resolve) => {
         const response = await fetch("/api/store/products");
-        const data = await response.json();
         if (response.ok) {
+          const data = await response.json();
           storeProducts.set(data);
         }
-      }
+        resolve(response);
+      });
+
+      Promise.all([fetchUser, fetchStore, fetchProducts])
+
+        .catch((error) => {
+          console.error("Error in one or more requests:", error);
+        })
+        .finally(() => isLoading.set(false));
     </script></head
   >
 
@@ -44,6 +57,7 @@ const { title = "Home" } = Astro.props;
     >
       <Navbar client:load />
     </header>
+    <Intiailizing client:load />
     <Menu client:load />
     <main class="pt-[100px] pb-20">
       <slot />

@@ -14,15 +14,19 @@
       >
     </div>
     <div
-      class="w-[80%] hidden lg:inline-flex gap-4 items-center justify-center align-middle relative h-[32px] rounded-2xl bg-[#313131] overflow-hidden px-3 py-1.5"
+      class="w-[80%] hidden lg:grid place-items-center relative h-[32px] rounded-2xl bg-[#313131] overflow-hidden px-3 py-1.5"
     >
-      {#each new Array(50).fill(0) as _}
-        <div
-          class="animate-marquee whitespace-nowrap !text-xs font-normal uppercase tracking-tighter mx-0 w-full"
-        >
-          {$storeDetails.slogan}
-        </div>
-      {/each}
+      <div
+        class="gap-4 inline-flex animate-[marquee_15s_infinite_linear] items-center justify-center align-middle"
+      >
+        {#each new Array(50).fill(0) as _}
+          <div
+            class="!whitespace-nowrap !text-xs font-normal uppercase tracking-tighter mx-0 w-full"
+          >
+            {$storeDetails.slogan}
+          </div>
+        {/each}
+      </div>
     </div>
     <div>
       <div class="flex gap-0">

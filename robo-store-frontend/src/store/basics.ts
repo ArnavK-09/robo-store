@@ -1,6 +1,6 @@
 import { atom } from "nanostores";
 
-interface StoreDetails {
+export interface StoreDetails {
   store_name: string;
   categories: string[];
   domain?: string;
@@ -9,8 +9,9 @@ interface StoreDetails {
   about_us?: string;
   invite?: string;
   slogan: string;
+  hero_image?: string;
 }
-interface StoreProduct {
+export interface StoreProduct {
   _id: string;
   title: string;
   price: number;
@@ -31,5 +32,8 @@ export const storeDetails = atom<StoreDetails>({
 });
 
 export const storeProducts = atom<StoreProduct[]>([]);
-
+export const cart = atom<Array<{ product: StoreProduct; quantity: number }>>(
+  [],
+);
 export const isHamburgerMenuOpen = atom<boolean>(false);
+export const isLoading = atom<boolean>(true);
