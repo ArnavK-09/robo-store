@@ -16,7 +16,8 @@ import {
 	toNodeListener
 } from 'h3';
 import http from 'http';
-import { options, pluginLogger, PluginOptions } from './events/_start';
+import PluginOptions from '.';
+import { options, pluginLogger } from './events/_start';
 import DiscordOauth2 from 'discord-oauth2';
 import { portal } from 'robo.js';
 import { stat, readFile } from 'node:fs/promises';
@@ -225,7 +226,7 @@ export async function initPlugin(options: PluginOptions) {
 
 	// Connect To Database
 	await mongoose
-		.connect(options.mongo_uri)
+		.connect(options.mongo_uri!)
 		.then(() => pluginLogger.ready('Connected to Database!'))
 		.catch((e) => pluginLogger.error(e.message));
 

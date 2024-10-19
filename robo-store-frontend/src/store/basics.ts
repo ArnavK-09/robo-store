@@ -28,7 +28,7 @@ export const storeDetails = atom<StoreDetails>({
   categories: [],
   slogan: "on sale",
   introduction:
-    "Welcome to our exclusive store, where premium products meet a close-knit community. We’re not just any shop—our offerings are available only to those who join our private Discord server. As part of our community, you'll get early access to limited-edition items, special discounts, and insider perks. We're all about creating a seamless, personalized shopping experience with fast shipping, secure payments, and top-notch support. Connect with like-minded individuals, discover unique products, and enjoy a shopping experience built around you. Join us on Discord and become part of something special!",
+    "Welcome to our exclusive store, where premium products meet a close-knit community. We're not just any shop—our offerings are available only to those who join our private Discord server. As part of our community, you'll get early access to limited-edition items, special discounts, and insider perks. We're all about creating a seamless, personalized shopping experience with fast shipping, secure payments, and top-notch support. Connect with like-minded individuals, discover unique products, and enjoy a shopping experience built around you. Join us on Discord and become part of something special!",
 });
 
 export const storeProducts = atom<StoreProduct[]>([]);

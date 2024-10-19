@@ -19,6 +19,7 @@
       class="w-[80%] hidden lg:grid place-items-center relative h-[32px] rounded-2xl bg-[#313131] overflow-hidden px-3 py-1.5"
     >
       <div
+        style={`animation: marquee ${$storeDetails.slogan.length}s infinite linear;`}
         class="gap-4 inline-flex animate-[marquee_15s_infinite_linear] items-center justify-center align-middle"
       >
         {#each new Array(50).fill(0) as _}
