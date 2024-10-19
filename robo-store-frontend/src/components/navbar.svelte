@@ -1,5 +1,5 @@
 <script>
-  import { isHamburgerMenuOpen, storeDetails } from "@/store/basics";
+  import { isHamburgerMenuOpen, storeDetails, cart } from "@/store/basics";
 </script>
 
 <nav
@@ -9,7 +9,9 @@
     class="h-[64px] border-black border-2 bg-[#1a1a1a]/95 backdrop-blur-lg flex gap-3 items-center align-middle justify-between rounded-lg px-4 py-2"
   >
     <div>
-      <a href="/" class="logo-text tracking-tighter text-3xl uppercase"
+      <a
+        href="/"
+        class="logo-text whitespace-nowrap tracking-tighter text-3xl uppercase"
         >{$storeDetails.store_name}</a
       >
     </div>
@@ -36,7 +38,7 @@
           >
             <span
               class="bg-red-700 absolute top-2 right-2 rounded-full px-1 aspect-square font-semibold text-xs text-white"
-              >0</span
+              >{$cart.length ?? 0}</span
             >
             <svg
               class="h-[30px] !stroke-white/90 aspect-square"

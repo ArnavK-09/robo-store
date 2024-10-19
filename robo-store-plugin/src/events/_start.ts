@@ -14,13 +14,15 @@ export interface PluginOptions {
 	about_us?: string;
 	invite?: string;
 	introduction?: string;
+	client_secret: string;
+	client_id?: string;
 }
 export let options: PluginOptions;
 
 // Plugin specific logger
 export const pluginLogger = logger.fork('robo-store');
 
-// Intializing Plugin 
+// Intializing Plugin
 export default async (_client: Client, pluginOptions: PluginOptions) => {
 	// Default Store Options
 	pluginOptions.introduction ??=
@@ -29,7 +31,8 @@ export default async (_client: Client, pluginOptions: PluginOptions) => {
 	pluginOptions.about_us ??=
 		"Welcome to our exclusive store, where premium products meet a close-knit community. We’re not just any shop—our offerings are available only to those who join our private Discord server. As part of our community, you'll get early access to limited-edition items, special discounts, and insider perks. We're all about creating a seamless, personalized shopping experience with fast shipping, secure payments, and top-notch support. Connect with like-minded individuals, discover unique products, and enjoy a shopping experience built around you. Join us on Discord and become part of something special!";
 	pluginOptions.slogan ??= 'Grab The Products Now...';
-	pluginOptions.invite ??= `https://discord.com/users/${pluginOptions.owner_id}`
+	pluginOptions.invite ??= `https://discord.com/users/${pluginOptions.owner_id}`;
+	pluginOptions.client_id ??= process.env.DISCORD_CLIENT_ID;
 
 	// Assigning Options
 	options = pluginOptions;

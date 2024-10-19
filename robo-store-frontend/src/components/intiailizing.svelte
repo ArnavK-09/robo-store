@@ -4,12 +4,12 @@
 
 {#if $isLoading}
   <section
-    class="transition ease-in-out h-screen z-[200] grid place-items-center w-screen bg-black/85 backdrop-blur-md fixed top-0 left-0"
+    class="transition ease-in-out h-screen z-[200] grid place-items-center w-screen bg-black backdrop-blur-md fixed top-0 left-0"
   >
     <div class="animate-spin">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-28 w-28 animate-pulse"
+        class="h-28 w-28"
         viewBox="0 0 14 14"
         ><g
           fill="none"

@@ -34,8 +34,7 @@ export const config: CommandConfig = {
 		{
 			name: 'category',
 			description: 'The product category.',
-			type: 'string',
-			autocomplete: true
+			type: 'string'
 		}
 	]
 };
@@ -52,14 +51,4 @@ export default async (interaction: CommandInteraction, options: CommandOptions<t
 	});
 	const res = await newProduct.save();
 	return `Product ${res.title} saved!`;
-};
-
-// Listing Categories
-export const autocomplete = async () => {
-	return options.categories.map((x) => {
-		return {
-			name: x,
-			value: x
-		};
-	});
 };

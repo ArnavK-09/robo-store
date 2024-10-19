@@ -19,14 +19,14 @@
 		"dev": "robox dev",
 		"doctor": "sage doctor",
 		"invite": "robo invite",
-		"lint:style": "prettier --write .",
+		"fmt": "prettier --write .",
 		"start": "robo start",
 		"upgrade": "sage upgrade"
 	},
 	"dependencies": {
 		"discord.js": "^14.16.3",
 		"robo-store": "file:../robo-store-plugin",
-		"robo.js": "^0.10.19",
+		"robo.js": "^0.10.22",
 		"zod": "^3.23.8"
 	},
 	"devDependencies": {

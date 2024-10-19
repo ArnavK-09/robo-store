@@ -2,7 +2,7 @@
   <div class="animate-spin">
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      class="h-28 w-28 animate-pulse"
+      class="h-28 w-28"
       viewBox="0 0 14 14"
       ><g
         fill="none"

@@ -2,22 +2,28 @@
   import { storeDetails, storeProducts } from "@/store/basics";
   import Loading from "@/components/loading.svelte";
 
-  const allOptions = ["All", ...$storeDetails.categories];
+  let allOptions = ["all", ...($storeDetails?.categories ?? undefined)].filter(
+    (x) => !!x,
+  );
   let selectedOption: allOptions = allOptions[0];
 
   let filteredProducts = $storeProducts;
 
   $: {
-    filteredProducts = $storeProducts.filter((x) =>
-      x.categories.includes(selectedOption),
+    allOptions = ["all", ...($storeDetails?.categories ?? undefined)].filter(
+      (x) => !!x,
     );
+    filteredProducts = $storeProducts.filter((x) => {
+      if (selectedOption.toLowerCase() === "all") return true;
+      return x.category.toLowerCase() == selectedOption.toLowerCase();
+    });
   }
 </script>
 
 <div class="overflow-x-hidden w-screen px-4">
   <div class="select-none">
     <h2 class="tracking-tight font-bold text-4xl md:text-5xl lg:text-6xl">
-      SHOP
+      SHOP ({$storeProducts.length})
     </h2>
     <div class="mt-4 flex gap-4 flex-wrap break-words">
       {#each allOptions as x}
@@ -36,9 +42,18 @@
       {#if $storeProducts.length == 0}
         <Loading />
       {/if}
+      {#if filteredProducts.length == 0 && $storeProducts.length !== 0}
+        <div
+          class="h-full grid place-items-center text-center w-full select-none"
+        >
+          <strong class="break-words text-white/80 text-xl"
+            >( No Products )
+          </strong>
+        </div>
+      {/if}
       {#each filteredProducts as product (product._id)}
-        {@const finalPrice = Math.floor(
-          product.price - (product.discount / product.price) * 100,
+        {@const finalPrice = Math.round(
+          product.price - (product.discount * product.price) / 100,
         )}
         <a href={`/product?id=${product._id}`}
           ><div
@@ -65,12 +80,12 @@
                 class="break-all text-lg md:text-xl tracking-tight uppercase font-normal"
                 >{product.title}</strong
               >
-              <strong class="font-bold text-green-500 text-sm md:text-md"
+              <strong class="font-bold text-green-500 text-md md:text-lg"
                 >${finalPrice}
                 {#if finalPrice !== product.price}
                   <span
                     class="text-xs font-thin ml-1 line-through text-white/40 tracking-normal"
-                    >$233</span
+                    >${product.price}</span
                   >
                 {/if}
               </strong>

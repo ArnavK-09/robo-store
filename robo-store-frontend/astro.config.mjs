@@ -13,5 +13,5 @@ export default defineConfig({
   outDir: [
     "../robo-store-demo/.robo.store",
     "../robo-store-plugin/seed/_root/.robo.store",
-  ][0],
+  ][1],
 });

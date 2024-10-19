@@ -36,6 +36,6 @@ export default async (interaction: CommandInteraction) => {
 // Lisiting Products
 export const autocomplete = async (interaction: AutocompleteInteraction) => {
 	const query = interaction.options.get('product')?.value?.toString() ?? '';
-	const listOfProducts = await Product.find().$where(`this.title.includes('${query}')`).exec();
-	return listOfProducts.map((x) => ({ name: x.title, value: x._id }));
+	const listOfProducts = await Product.find().exec();
+	return listOfProducts.filter((x) => x.title.includes(query)).map((x) => ({ name: x.title, value: x._id }));
 };

@@ -12,4 +12,4 @@ export default {
 	experimental: {
 		userInstall: true
 	}
-}
+};
