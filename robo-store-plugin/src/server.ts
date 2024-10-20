@@ -234,7 +234,7 @@ me.get(
  * Function to start server
  */
 export async function initPlugin(options: PluginOptions) {
-	pluginLogger.log(options);
+	pluginLogger.debug(options);
 
 	// Discord Oauth
 	oauth = new DiscordOauth2({

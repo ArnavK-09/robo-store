@@ -32,9 +32,9 @@ export default async (interaction: CommandInteraction): Promise<CommandResult> =
 	return `${res} Updated`;
 };
 
-// Lisiting Products
+// Lisiting Orders
 export const autocomplete = async (interaction: AutocompleteInteraction) => {
 	const query = interaction.options.get('order')?.value?.toString() ?? '';
-	const listOfProducts = await Order.find().$where(`this._id.includes('${query}')`).exec();
-	return listOfProducts.map((x) => ({ value: x._id }));
+	const listOfProducts = await Order.find().exec();
+	return listOfProducts.filter((x) => x.primary_id.includes(query)).map((x) => ({ name: x.primary_id, value: x._id }));
 };

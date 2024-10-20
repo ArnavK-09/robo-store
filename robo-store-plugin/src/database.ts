@@ -1,5 +1,6 @@
 // Imports Required
 import mongoose, { Schema, Types } from 'mongoose';
+import {nanoid} from "nanoid";
 
 /**
  * Types
@@ -21,12 +22,19 @@ export interface OrderType {
 	status: 'pending' | 'shipped' | 'delivered' | 'canceled';
 	orderedAt: Date;
 	product: Types.ObjectId | ProductType;
+	primary_id: string;
 }
 
 /**
  * Schemas
  */
 const orderSchema = new Schema({
+	primary_id: {
+		type: String,
+		required: true,
+		unique: true,
+		default: nanoid(8)
+	},
 	buyer: {
 		type: String,
 		required: true,
