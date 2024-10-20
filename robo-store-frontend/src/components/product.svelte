@@ -16,6 +16,9 @@
     if (response.ok) {
       const data = await response.json();
       product.set(data);
+      if (window) {
+        window.document.title = `View ${$product.title} | ${storeDetails.value.store_name}`;
+      }
     }
     if (!productId || !product) {
       window.location.href = window.location.origin;

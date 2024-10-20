@@ -11,7 +11,7 @@
   >
     {#each new Array(50).fill(0) as x}
       <div
-        class="select-none whitespace-nowrap text-black !text-xl font-bold uppercase tracking-tighter mx-0 w-full"
+        class="select-none whitespace-nowrap text-black !text-xl font-bold uppercase tracking-tighter mx-0"
       >
         {$storeDetails.slogan}
       </div>

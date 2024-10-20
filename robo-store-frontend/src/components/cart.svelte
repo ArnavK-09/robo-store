@@ -1,6 +1,7 @@
 <script lang="ts">
   import CartEntry from "@/components/cart_entry.svelte";
   import { cart as cartItems } from "@/store/basics";
+  import { User } from "@/store/user";
 
   let total_price = 0;
   let final_price = 0;
@@ -65,10 +66,14 @@
         on:click={() => {
           console.log($cartItems);
         }}
-        disabled={$cartItems.length == 0}
+        disabled={$cartItems.length == 0 || !$User}
         class="mt-6 text-center inline-block w-full md:w-1/2 mx-auto shrink-0 rounded-md border border-white bg-white/90 px-12 py-3 text-md font-bold text-[#1a1a1a] transition hover:bg-transparent hover:text-white focus:outline-none ring-0 disabled:opacity-60 focus:ring-0"
       >
-        Checkout {$cartItems.length} Item{$cartItems.length > 1 ? "s" : ""}
+        {#if $User}
+          Checkout {$cartItems.length} Item{$cartItems.length > 1 ? "s" : ""}
+        {:else}
+          Login To Continue
+        {/if}
       </button>
     </div>
   </div>

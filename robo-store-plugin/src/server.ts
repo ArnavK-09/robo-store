@@ -117,9 +117,11 @@ api.get(
 			};
 		}
 
+		console.log('code ', code);
+
 		const data = await oauth.tokenRequest({
 			code: code.toString(),
-			scope: 'identify email',
+			scope: ['identify', 'email'],
 			grantType: 'authorization_code'
 		});
 
@@ -196,8 +198,23 @@ me.get(
 	defineEventHandler(async (e) => {
 		const access_token = getCookie(e, 'access_token');
 		checkAuth(e);
-		const user = await oauth.getUser(access_token!);
-		return user;
+		const { id, global_name, username, email, verified } = await oauth.getUser(access_token!);
+		return { id, global_name, username, email, verified };
+	})
+);
+
+// GET /api/@me/avatar
+me.get(
+	'/avatar',
+	defineEventHandler(async (e) => {
+		const access_token = getCookie(e, 'access_token');
+		checkAuth(e);
+		const { avatar, id } = await oauth.getUser(access_token!);
+		if (avatar) {
+			return sendRedirect(e, `https://cdn.discordapp.com/avatars/${id}/${avatar}?size=2048&dynamic=true`);
+		} else {
+			return sendRedirect(e, `/favicon.svg`);
+		}
 	})
 );
 
@@ -217,6 +234,8 @@ me.get(
  * Function to start server
  */
 export async function initPlugin(options: PluginOptions) {
+	pluginLogger.log(options);
+
 	// Discord Oauth
 	oauth = new DiscordOauth2({
 		redirectUri: `https://${options.domain}/api/callback`,

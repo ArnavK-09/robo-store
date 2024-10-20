@@ -3,10 +3,14 @@
   import Loading from "@/components/loading.svelte";
   import { onMount } from "svelte";
 
+  let avatar = null;
+
   onMount(() => {
+    console.log($User);
     if (!$User) {
-      // window.location.href = window.location.origin;
+      window.location.href = window.location.origin;
     }
+    avatar = `https://cdn.discordapp.com/avatars/${$User.id}/${$User.avatar}?size=2048&dynamic=true`;
   });
 </script>
 
@@ -15,15 +19,26 @@
   class="overflow-x-hidden w-screen h-screen grid place-items-center"
 >
   {#if $User}
+    <div class="w-full grid place-items-center overflow-x-hidden">
+      <img
+        href="/api/@me/avatar"
+        alt="profile"
+        class="block mx-auto rounded-full h-40 aspect-square lg:mb-4"
+      />
+      <div
+        style={`background-image: url(/api/@me/avatar);background-size: contain;`}
+        class="block mx-auto rounded-full bg-white/20 h-40 aspect-square lg:mb-4"
+      ></div>
+    </div>
     <form
       on:submit|preventDefault={() => {}}
-      class="mt-8 grid grid-cols-6 gap-6"
+      class="w-full md:w-[80%] mt-8 grid grid-cols-6 gap-6"
     >
-      {#each $User.keys as key}
+      {#each Object.keys($User) as key}
         <div class="col-span-6">
           <label
             for={key}
-            class="block text-sm font-normal text-gray-400 tracking-relaxed"
+            class="block uppercase text-sm font-normal text-gray-400 tracking-relaxed"
           >
             {key}
           </label>
@@ -41,16 +56,8 @@
       {/each}
       <div class="col-span-6 text-center grid place-items-center">
         <a
-          href="/api/logout"
-          class="inline-block shrink-0 rounded-md border border-white bg-white/90 px-12 py-3 text-sm font-medium text-black transition hover:bg-transparent hover:text-white focus:outline-none focus:ring"
-        >
-          LOGOUT
-        </a>
-      </div>
-      <div class="col-span-6 text-center grid place-items-center">
-        <a
           href="/api/@me/logout"
-          class="mt-4 px-12 hover:scale-[1.02] transition ease-in-out lg:mt-1 bg-[#de2222] w-full tracking-tighter text-2xl uppercase select-none rounded-xl py-6 text-center font-bold"
+          class="mt-4 px-5 lg:px-12 hover:scale-[1.02] transition ease-in-out lg:mt-1 bg-[#de2222] tracking-tighter text-lg md:text-xl lg:text-2xl uppercase select-none rounded-xl py-4 md:py-6 text-center font-bold"
         >
           LOGOUT
         </a>

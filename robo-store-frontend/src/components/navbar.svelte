@@ -11,7 +11,7 @@
     <div>
       <a
         href="/"
-        class="logo-text whitespace-nowrap tracking-tighter text-3xl uppercase"
+        class="text-white lg:logo-text break-all md:break-normal md:whitespace-nowrap tracking-tighter text-xl md:text-3xl uppercase"
         >{$storeDetails.store_name}</a
       >
     </div>
@@ -20,7 +20,7 @@
     >
       <div
         style={`animation: marquee ${$storeDetails.slogan.length}s infinite linear;`}
-        class="gap-4 inline-flex animate-[marquee_15s_infinite_linear] items-center justify-center align-middle"
+        class="gap-4 inline-flex hover:animate-none animate-[marquee_15s_infinite_linear] items-center justify-center align-middle"
       >
         {#each new Array(50).fill(0) as _}
           <div
