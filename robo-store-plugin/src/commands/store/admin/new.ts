@@ -50,5 +50,5 @@ export default async (interaction: CommandInteraction, options: CommandOptions<t
 		image: options.image!.url?.toString()
 	});
 	const res = await newProduct.save();
-	return `Product ${res.title} saved!`;
+	return `✅ **Product** '${res.title}' **saved!**\n\n**Details:**\n- **Description:** '${res.description}'\n- **Category:** '${res.category}'\n- **Price:** '${res.price}'\n- **Image URL:** '${res.image}'`;
 };

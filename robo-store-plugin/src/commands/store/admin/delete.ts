@@ -19,9 +19,9 @@ export const config: CommandConfig = {
 
 // Command Execution
 export default async (interaction: CommandInteraction): Promise<CommandResult> => {
-	// const productId = interaction.options.get('product')!.value!.toString();
-	// await Product.deleteOne({ _id: productId }).exec();
-	return `Deleted successfully`;
+	const productId = interaction.options.get('product')!.value!.toString();
+	await Product.deleteOne({ _id: productId }).exec();
+	return `🗑️ **Deleted product with ID** '${productId}'`;
 };
 
 // Lisiting Products

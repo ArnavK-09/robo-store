@@ -29,8 +29,8 @@ export const config: CommandConfig = {
 export default async (interaction: CommandInteraction) => {
 	const productId = interaction.options.get('product')!.value!.toString();
 	const discount = interaction.options.get('discount')?.value;
-	const res = await Product.updateOne({ _id: productId }, { discount: discount }).exec();
-	return `${res.acknowledged} Updated!`;
+	await Product.updateOne({ _id: productId }, { discount: discount }).exec();
+	return `✅ **Successfully applied a discount of** \`${discount}%\` **to the selected product!**`;
 };
 
 // Lisiting Products
