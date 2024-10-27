@@ -21,8 +21,8 @@ export default async (interaction: CommandInteraction): Promise<CommandResult> =
 	const orderId = interaction.options.get('order')!.value!.toString();
 	const res = await Order.findById(orderId).exec();
 	if (res) {
-		return `📦 **Order Details:**\n\n**Order ID:** '${res.primary_id}'\n**Buyer:** '${res.buyer}'\n**Payment Status:** '${res.payment_done ? "Completed" : "Pending"}'\n**Total Amount:** '${res.totalAmount}'\n**Status:** '${res.status}'\n**Ordered At:** '${res.orderedAt.toLocaleString()}'\n**Product ID:** '${res.product}'`;
+		return `📦 **Order Details:**\n\n**Order ID:** '${res.primary_id}'\n**Buyer:** '${res.buyer}'\n**Payment Status:** '${res.payment_done ? 'Completed' : 'Pending'}'\n**Total Amount:** '${res.totalAmount}'\n**Status:** '${res.status}'\n**Ordered At:** '${res.orderedAt.toLocaleString()}'\n**Product ID:** '${res.product}'`;
 	} else {
-		return `❌ **No order found with ID** '${orderId}'`
+		return `❌ **No order found with ID** '${orderId}'`;
 	}
 };

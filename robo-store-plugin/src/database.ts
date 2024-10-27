@@ -1,6 +1,6 @@
 // Imports Required
 import mongoose, { Schema, Types } from 'mongoose';
-import {nanoid} from "nanoid";
+import { nanoid } from 'nanoid';
 
 /**
  * Types

@@ -38,7 +38,7 @@ export default async (interaction: CommandInteraction) => {
 	const productId = interaction.options.get('product')!.value!.toString();
 	const stockOut = interaction.options.get('stock_out')?.value?.toString() ?? 'true';
 	await Product.updateOne({ _id: productId }, { stockout: stockOut == 'true' }).exec();
-	return  `✅ **Product with ID** '${productId}' **stock status has been updated to** '${stockOut == 'true' ? "Out of Stock" : "In Stock"}'!`;
+	return `✅ **Product with ID** '${productId}' **stock status has been updated to** '${stockOut == 'true' ? 'Out of Stock' : 'In Stock'}'!`;
 };
 
 // Lisiting Products
