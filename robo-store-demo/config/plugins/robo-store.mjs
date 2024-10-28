@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-ch/ck
 
 /**
  * @type {import('robo-store/.robo/build').default}

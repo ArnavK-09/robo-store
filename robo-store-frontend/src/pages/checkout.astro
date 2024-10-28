@@ -1,0 +1,20 @@
+---
+import Layout from "@/layouts/default.astro";
+import CheckoutP from "@/components/checkout.svelte";
+---
+
+<Layout title="Checkout Your Order">
+  <section class="overflow-x-hidden w-screen mt-5">
+    <div class="select-none">
+      <h2
+        class="tracking-tight text-center font-bold text-4xl md:text-5xl lg:text-6xl"
+      >
+        Checkout
+      </h2>
+    </div>
+
+    <div>
+      <CheckoutP client:load />
+    </div>
+  </section>
+</Layout>

@@ -6,7 +6,6 @@
   let avatar = null;
 
   onMount(() => {
-    console.log($User);
     if (!$User) {
       window.location.href = window.location.origin;
     }

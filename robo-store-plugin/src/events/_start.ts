@@ -21,6 +21,7 @@ export default async (_client: Client, pluginOptions: PluginOptions) => {
 	pluginOptions.invite ??= `https://discord.com/users/${pluginOptions.owner_id}`;
 	pluginOptions.client_id ??= process.env.DISCORD_CLIENT_ID;
 	pluginOptions.mongo_uri ??= process.env.MONGO_URI;
+	pluginOptions.currency_symbol ??= '$';
 
 	// Assigning Options
 	options = pluginOptions;

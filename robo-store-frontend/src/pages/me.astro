@@ -1,10 +1,7 @@
 ---
 import Layout from "@/layouts/default.astro";
 import Account from "@/components/account.svelte";
-import { User } from "@/store/user";
-if (!User) {
-  Astro.redirect("/");
-}
+import Orders from "@/components/orders.svelte";
 ---
 
 <Layout title="Your Account">
@@ -19,6 +16,19 @@ if (!User) {
 
     <div>
       <Account client:load />
+    </div>
+  </section>
+  <section class="overflow-x-hidden w-screen px-4 mt-5">
+    <div class="select-none">
+      <h2
+        class="tracking-tight text-center font-bold text-4xl md:text-5xl lg:text-6xl"
+      >
+        Your Orders
+      </h2>
+    </div>
+
+    <div>
+      <Orders client:load />
     </div>
   </section>
 </Layout>

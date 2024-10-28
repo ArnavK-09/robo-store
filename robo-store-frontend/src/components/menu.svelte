@@ -13,7 +13,13 @@
       class="w-[95%] md:w-1/2 lg:w-1/3 animate-menu_show block mx-auto md:absolute md:right-5 h-auto bg-[#1a1a1a] rounded-xl p-2 border-black border-2"
     >
       <div class="w-full grid grid-cols-2 gap-1">
-        {#each ["Home", "Store", "About", "Contact"] as x}
+        <a
+          href={`/`}
+          class="select-none tracking-tight w-full m-0 px-2 uppercase bg-white grid place-items-center text-xl overflow-hidden font-bold text-black text-left rounded-sm"
+        >
+          Home
+        </a>
+        {#each ["Store", "About", "Contact"] as x}
           <a
             href={`/${x.toLowerCase()}`}
             class="select-none tracking-tight w-full m-0 px-2 uppercase bg-white grid place-items-center text-xl overflow-hidden font-bold text-black text-left rounded-sm"

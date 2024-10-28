@@ -1,11 +1,13 @@
 // Imports Required
 import mongoose, { Schema, Types } from 'mongoose';
 import { nanoid } from 'nanoid';
+import { sum } from './server';
 
 /**
  * Types
  */
 export interface ProductType {
+	_id: string;
 	title: string;
 	price: number;
 	image: string;
@@ -19,9 +21,10 @@ export interface OrderType {
 	buyer: string;
 	payment_done: boolean;
 	totalAmount: number;
+	finalAmount: number;
 	status: 'pending' | 'shipped' | 'delivered' | 'canceled';
 	orderedAt: Date;
-	product: Types.ObjectId | ProductType;
+	products: { product: Types.ObjectId | ProductType; quantity: number }[];
 	primary_id: string;
 }
 
@@ -33,7 +36,7 @@ const orderSchema = new Schema({
 		type: String,
 		required: true,
 		unique: true,
-		default: nanoid(8)
+		default: () => nanoid(8)
 	},
 	buyer: {
 		type: String,
@@ -48,6 +51,10 @@ const orderSchema = new Schema({
 		type: Number,
 		required: true
 	},
+	finalAmount: {
+		type: Number,
+		required: false
+	},
 	status: {
 		type: String,
 		enum: ['pending', 'shipped', 'delivered', 'canceled'],
@@ -57,11 +64,21 @@ const orderSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	product: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Product',
-		required: true
-	}
+	products: [
+		{
+			product: {
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'Product',
+				required: true
+			},
+			quantity: {
+				type: Number,
+				required: true,
+				min: 1,
+				max: 10
+			}
+		}
+	]
 });
 
 const productSchema = new Schema({
@@ -103,6 +120,16 @@ const productSchema = new Schema({
 		type: Boolean,
 		default: false
 	}
+});
+
+/**
+ * Middleware
+ */
+orderSchema.pre('save', function (next) {
+	if (this.finalAmount == null) {
+		this.finalAmount = this.totalAmount;
+	}
+	next();
 });
 
 /**

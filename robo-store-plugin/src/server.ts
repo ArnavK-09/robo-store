@@ -8,12 +8,14 @@ import {
 	getCookie,
 	getQuery,
 	getRouterParam,
+	readValidatedBody,
 	H3Event,
 	sendRedirect,
 	serveStatic,
 	setCookie,
 	setResponseStatus,
-	toNodeListener
+	toNodeListener,
+	readBody
 } from 'h3';
 import http from 'http';
 import PluginOptions from '.';
@@ -23,7 +25,10 @@ import { portal } from 'robo.js';
 import { stat, readFile } from 'node:fs/promises';
 import { join } from 'path';
 import mongoose from 'mongoose';
-import { Product } from './database';
+import { Order, Product, ProductType } from './database';
+
+// Sum of array
+export const sum = (arr: number[]) => arr.reduce((a, b) => a + b, 0);
 
 // Discord Oauth
 let oauth = new DiscordOauth2({});
@@ -34,7 +39,7 @@ const FRONTEND_DIR = './.robo.store';
 // Create an app instance
 export const app = createApp({
 	onError: (error) => {
-		pluginLogger.error(error);
+		pluginLogger.debug(error);
 	}
 });
 
@@ -227,6 +232,65 @@ me.get(
 		deleteCookie(e, 'refresh_token');
 		if (access_token) await oauth.revokeToken(access_token);
 		return sendRedirect(e, '/');
+	})
+);
+
+// GET /api/@me/orders
+me.get(
+	'/orders',
+	defineEventHandler(async (e) => {
+		checkAuth(e);
+		const access_token = getCookie(e, 'access_token')!;
+		const { id } = await oauth.getUser(access_token!);
+		const orders = await Order.find({
+			buyer: id
+		});
+		return orders;
+	})
+);
+
+// POST /api/@me/order
+me.post(
+	'/order',
+	defineEventHandler(async (e) => {
+		checkAuth(e);
+		const access_token = getCookie(e, 'access_token');
+		const { id } = await oauth.getUser(access_token!);
+		const body: { cart: Array<{ product: ProductType; quantity: number }> } = await readBody(e);
+
+		if (!body.cart) {
+			return {
+				message: 'No Products Specified'
+			};
+		}
+
+		let allProducts = await Promise.all(
+			body.cart.map(async (x) => {
+				const product = await Product.findById(x.product._id).exec();
+
+				return product;
+			})
+		);
+
+		allProducts = allProducts.filter((p) => !!p);
+
+		let totalAmount = 0;
+		let finalAmount = 0;
+		totalAmount = sum(body.cart.map((x) => x.product.price * x.quantity));
+		finalAmount = sum(
+			body.cart.map((x) => Math.round(x.product.price - (x.product.discount * x.product.price) / 100) * x.quantity)
+		);
+		const newOrder = new Order({
+			buyer: id,
+			products: allProducts.map((x) => ({
+				product: x!._id,
+				quantity: body.cart.filter((c) => c.product._id.toString() == x!._id.toString())[0].quantity as Number
+			})),
+			totalAmount,
+			finalAmount
+		});
+		const order = await newOrder.save();
+		return order;
 	})
 );
 

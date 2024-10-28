@@ -7,6 +7,7 @@ export interface StoreDetails {
   introduction: string;
   owner_id?: string;
   about_us?: string;
+  currency_symbol: string;
   invite?: string;
   slogan: string;
   hero_image?: string;
@@ -25,6 +26,7 @@ export interface StoreProduct {
 
 export const storeDetails = atom<StoreDetails>({
   store_name: "Store",
+  currency_symbol: "$",
   categories: [],
   slogan: "on sale",
   introduction:

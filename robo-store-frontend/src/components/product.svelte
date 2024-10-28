@@ -114,11 +114,11 @@
             <h2
               class="text-green-500 uppercase text-4xl lg:text-5xl mt-3 mb-8 font-medium"
             >
-              ${finalPrice}
+              {$storeDetails.currency_symbol}{finalPrice}
               {#if finalPrice !== $product.price}
                 <span
                   class="text-3xl lg:text-4xl font-thin ml-1 line-through text-white/40 tracking-normal"
-                  >${$product.price}</span
+                  >{$storeDetails.currency_symbol}{$product.price}</span
                 >
               {/if}
             </h2>

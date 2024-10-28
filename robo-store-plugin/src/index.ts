@@ -11,4 +11,5 @@ export default interface PluginOptions {
 	introduction?: string;
 	client_secret: string;
 	client_id?: string;
+	currency_symbol?: string;
 }

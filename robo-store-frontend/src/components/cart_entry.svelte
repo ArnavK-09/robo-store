@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { type StoreProduct, cart } from "@/store/basics";
+  import { type StoreProduct, cart, storeDetails } from "@/store/basics";
   import { writable } from "svelte/store";
   export let product: StoreProduct;
   export let quantity: number;
@@ -47,7 +47,9 @@
       class="text-lg font-bold text-white hover:underline hover:underline-offset-4"
       href={`/product?id=${product._id}`}>{product.title}</a
     ><br />
-    <span class="text-white/90">${product.price}</span>
+    <span class="text-white/90"
+      >{$storeDetails.currency_symbol}{product.price}</span
+    >
   </div>
   <div
     class="scale-80 md:scale-100 flex items-center justify-center text-center align-center"
