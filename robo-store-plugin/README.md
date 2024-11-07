@@ -185,7 +185,7 @@ Found a bug or need help? Please create an issue on the [GitHub repository](http
 <h2 align="center">📄 License</h2>
 
 <p align="center">
-**robo-store** is licensed under the MIT License. See the [LICENSE](https://github.com/ArnavK-09/robo-store/blob/main/LICENSE) file for more details.
+**robo-store** is licensed under the MIT License. See the <a href="https://github.com/ArnavK-09/robo-store/blob/main/LICENSE">LICENSE</a> file for more details.
 </p>
 
 <h2 align="center">💖 Thanks for Using robo-store!</h2>

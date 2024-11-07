@@ -55,11 +55,13 @@ To get started, clone the repository, make your changes, and submit a pull reque
 
 ---
 
-## 📜 License
+<h2 align="center">📄 License</h2>
 
-This project is licensed under the MIT License.
+<p align="center">
+**robo-store** is licensed under the MIT License. See the <a href="https://github.com/ArnavK-09/robo-store/blob/main/LICENSE">LICENSE</a> file for more details.
+</p>
 
-## 👤 Author
+<h2 align="center">👤 Author</h2>
 
 <table>
   <tbody>
