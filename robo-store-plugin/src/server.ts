@@ -26,12 +26,19 @@ import { stat, readFile } from 'node:fs/promises';
 import { join } from 'path';
 import mongoose from 'mongoose';
 import { Order, Product, ProductType } from './database';
+import { Client, Options, Snowflake } from 'discord.js';
 
 // Sum of array
 export const sum = (arr: number[]) => arr.reduce((a, b) => a + b, 0);
 
 // Discord Oauth
 let oauth = new DiscordOauth2({});
+
+// Discord Client 
+let client: Client;
+
+// Plugin Options 
+let plugin_options: PluginOptions;
 
 // Directory where frontend files are;
 const FRONTEND_DIR = './.robo.store';
@@ -127,11 +134,11 @@ api.get(
 		const data = await oauth.tokenRequest({
 			code: code.toString(),
 			scope: ['identify', 'email'],
-			grantType: 'authorization_code'
+			grantType: 'authorization_code',
+			clientSecret: plugin_options.client_secret
 		});
 
 		console.log(data);
-
 		setCookie(e, 'access_token', data.access_token, { secure: true, maxAge: data.expires_in });
 		setCookie(e, 'refresh_token', data.refresh_token, { secure: true, maxAge: data.expires_in });
 
@@ -290,6 +297,7 @@ me.post(
 			finalAmount
 		});
 		const order = await newOrder.save();
+		notifyOwnerOfNewOrder(order.id, client).catch(pluginLogger.error)
 		return order;
 	})
 );
@@ -297,7 +305,7 @@ me.post(
 /**
  * Function to start server
  */
-export async function initPlugin(options: PluginOptions) {
+export async function initPlugin(options: PluginOptions, discord_client: Client) {
 	pluginLogger.debug(options);
 
 	// Discord Oauth
@@ -306,6 +314,12 @@ export async function initPlugin(options: PluginOptions) {
 		clientId: options.client_id,
 		clientSecret: options.client_secret
 	});
+
+	// Discord Client 
+	client = discord_client
+
+	// Plugin Options 
+	plugin_options = options
 
 	// Connect To Database
 	await mongoose
@@ -329,4 +343,18 @@ function checkAuth(e: H3Event<EventHandlerRequest>) {
 			message: 'Unauthorized'
 		};
 	}
+}
+
+
+/**
+ * Notifying Utils
+ */
+
+async function notifyOwnerOfNewOrder (order_id: string, discord_client: Client) {
+	const order = await Order.findById(order_id).exec()
+	const owner = await discord_client.users.fetch(plugin_options.owner_id as Snowflake);
+
+	owner.send({
+		content: "New Order Received"
+	})
 }

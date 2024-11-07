@@ -28,7 +28,7 @@ export const config: CommandConfig = {
 export default async (interaction: CommandInteraction): Promise<CommandResult> => {
 	const orderId = interaction.options.get('order')!.value!.toString();
 	const newStatus = interaction.options.get('status')!.value!.toString();
-	const res = await Order.updateOne({ _id: orderId }, { status: newStatus }).exec();
+	await Order.updateOne({ _id: orderId }, { status: newStatus }).exec();
 	return `✅ **Order with ID** '${orderId}' **has been updated to** '${newStatus}'`;
 };
 

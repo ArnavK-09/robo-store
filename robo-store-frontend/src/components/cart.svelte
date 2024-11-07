@@ -62,10 +62,10 @@
     </div>
 
     <div class="w-full flex items-center justify-center">
-      <a href={$User ? "/checkout" : "/login"}>
+      <a class="z-[100]" href={$User ? "/checkout" : "/api/login"}>
         <button
           disabled={$cartItems.length == 0 || !$User}
-          class="mt-6 text-center inline-block w-full md:w-1/2 mx-auto shrink-0 rounded-md border border-white bg-white/90 px-12 py-3 text-md font-bold text-[#1a1a1a] transition hover:bg-transparent hover:text-white focus:outline-none ring-0 disabled:opacity-60 focus:ring-0"
+          class="mt-6 text-center inline-block w-full mx-auto shrink-0 rounded-md border border-white bg-white/90 px-12 py-3 text-md font-bold text-[#1a1a1a] transition hover:bg-transparent hover:text-white focus:outline-none ring-0 disabled:opacity-60 focus:ring-0"
         >
           {#if $User}
             Checkout {$cartItems.length} Item{$cartItems.length > 1 ? "s" : ""}

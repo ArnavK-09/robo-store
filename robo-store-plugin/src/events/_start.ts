@@ -10,7 +10,7 @@ export let options: PluginOptions;
 export const pluginLogger = logger.fork('robo-store');
 
 // Intializing Plugin
-export default async (_client: Client, pluginOptions: PluginOptions) => {
+export default async (client: Client, pluginOptions: PluginOptions) => {
 	// Default Store Options
 	pluginOptions.introduction ??=
 		"Exclusive products available only for our private community! Join our Discord to access special deals, limited drops, and insider perks. Fast shipping and secure checkout for members only. Don't miss out!";
@@ -29,7 +29,7 @@ export default async (_client: Client, pluginOptions: PluginOptions) => {
 
 	// Starting mongo server & plugin
 	pluginLogger.event('Initializing processes...');
-	await initPlugin(options).catch((err) => {
+	await initPlugin(options, client).catch((err) => {
 		pluginLogger.error(err);
 	});
 };

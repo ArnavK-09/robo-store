@@ -1,7 +1,6 @@
 // Imports Required
 import mongoose, { Schema, Types } from 'mongoose';
 import { nanoid } from 'nanoid';
-import { sum } from './server';
 
 /**
  * Types

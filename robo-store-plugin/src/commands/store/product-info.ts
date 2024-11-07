@@ -29,8 +29,12 @@ export const config: CommandConfig = {
 export default async (interaction: CommandInteraction): Promise<CommandResult> => {
 	const productId = interaction.options.get('product')!.value!.toString();
 	const res = await Product.findById(productId).exec();
-	return {
-		embeds: [genProductEmbed(res as ProductType)],
+	if(!res) return `❌ **No product found with ID**`;
+	else return {
+		embeds: [genProductEmbed({
+			...res.toObject(),  
+			_id: res._id.toString()  
+		  } as ProductType)],
 		components: [
 			new ActionRowBuilder<ButtonBuilder>().addComponents(
 				new ButtonBuilder()

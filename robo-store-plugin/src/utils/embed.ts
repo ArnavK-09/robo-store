@@ -21,6 +21,7 @@ export const genProductEmbed = (product: ProductType): EmbedBuilder => {
 };
 
 // Generating Order Embed for Preview in Discord Chat
+// @notused
 export const genOrderEmbed = (order: OrderType): EmbedBuilder => {
 	return new EmbedBuilder()
 		.setColor('#F24E1E')
@@ -31,7 +32,7 @@ export const genOrderEmbed = (order: OrderType): EmbedBuilder => {
 			{ name: 'Total Amount', value: `$${order.totalAmount.toFixed(2)}`, inline: true },
 			{ name: 'Payment Status', value: order.payment_done ? '✅ Completed' : '❌ Pending', inline: true },
 			{ name: 'Ordered At', value: order.orderedAt.toDateString(), inline: true },
-			{ name: 'Product ID', value: `${order.product}`, inline: true }
+			{ name: 'Products', value: `${order.products}`, inline: true }
 		)
 		.setFooter({ text: `Order Date: ${order.orderedAt.toLocaleString()}` });
 };

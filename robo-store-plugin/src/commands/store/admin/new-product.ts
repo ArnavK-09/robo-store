@@ -2,7 +2,7 @@
 import type { CommandConfig, CommandOptions } from 'robo.js';
 import type { CommandInteraction } from 'discord.js';
 import { Product } from '../../../database';
-import { options } from '../../../events/_start';
+import { options as pluginOptions } from '../../../events/_start';
 
 // Command Config
 export const config: CommandConfig = {
@@ -41,13 +41,26 @@ export const config: CommandConfig = {
 
 // Command Execution
 export default async (interaction: CommandInteraction, options: CommandOptions<typeof config>) => {
+	let img_url: string = interaction.options.get('image')?.value as string;
+
+	if(pluginOptions?.imgbb_api_key) {
+		try {
+			const res = await fetch(`https://api.imgbb.com/1/upload?key=${pluginOptions.imgbb_api_key}&image=${img_url}`, {method: 'POST'})
+			if(res.ok) {
+				const data = (await res.json()) as {display_url?: string}
+				if(data.display_url) {
+					img_url = decodeURIComponent(data.display_url)
+				}
+			}
+		} catch {}
+	}
+
 	const newProduct = new Product({
 		title: options.title,
 		description: options.description,
 		category: options.category,
 		price: options.price,
-		// @ts-expect-error TODO to fi this type issue
-		image: options.image!.url?.toString()
+		image: img_url
 	});
 	const res = await newProduct.save();
 	return `✅ **Product** '${res.title}' **saved!**\n\n**Details:**\n- **Description:** '${res.description}'\n- **Category:** '${res.category}'\n- **Price:** '${res.price}'\n- **Image URL:** '${res.image}'`;
