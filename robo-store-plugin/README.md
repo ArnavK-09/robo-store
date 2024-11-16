@@ -128,12 +128,6 @@ export default {
 
 ## 💻 Contributing
 
-Here’s a more concise version of the contribution guidelines:
-
----
-
-## 💻 Contributing
-
 > [!TIP]  
 > We welcome contributions to improve **robo-store**! If you have suggestions, bug fixes, or new feature ideas, follow these steps:
 
