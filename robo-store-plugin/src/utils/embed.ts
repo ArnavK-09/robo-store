@@ -8,7 +8,7 @@ export const genProductEmbed = (product: ProductType): EmbedBuilder => {
 	return new EmbedBuilder()
 		.setColor('#5865F2')
 		.setTitle(product.title)
-		.setURL(`https://${options.domain}`)
+		.setURL(new URL(`/store/${product._id}`, options.domain).href)
 		.setAuthor({ name: product.stockout ? 'Product Not Available :(' : 'Product Available :)' })
 		.setDescription(product.description ?? 'No product description available.')
 		.addFields(

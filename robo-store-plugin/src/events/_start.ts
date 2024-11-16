@@ -28,7 +28,7 @@ export default async (client: Client, pluginOptions: PluginOptions) => {
 	pluginLogger.debug('Plugin Specified Options:- ', options);
 
 	// Starting mongo server & plugin
-	pluginLogger.event('Initializing processes...');
+	pluginLogger.event('Initializing processes...At:- https://localhost:' + 3000);
 	await initPlugin(options, client).catch((err) => {
 		pluginLogger.error(err);
 	});

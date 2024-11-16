@@ -30,12 +30,15 @@ export default async (interaction: CommandInteraction) => {
 	const productId = interaction.options.get('product')!.value!.toString();
 	const discount = interaction.options.get('discount')?.value;
 	await Product.updateOne({ _id: productId }, { discount: discount }).exec();
-	return `✅ **Successfully applied a discount of** \`${discount}%\` **to the selected product!**`;
+	return `✅ **Successfully applied a discount of** \` ${discount}% \` **to the selected product!**`;
 };
 
 // Lisiting Products
 export const autocomplete = async (interaction: AutocompleteInteraction) => {
 	const query = interaction.options.get('product')?.value?.toString() ?? '';
 	const listOfProducts = await Product.find().exec();
-	return listOfProducts.filter((x) => x.title.includes(query)).map((x) => ({ name: x.title, value: x._id }));
+	return listOfProducts
+		.filter((x) => x.title.includes(query))
+		.map((x) => ({ name: x.title, value: x._id }))
+		.slice(0, 24);
 };

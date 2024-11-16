@@ -34,10 +34,10 @@ export const sum = (arr: number[]) => arr.reduce((a, b) => a + b, 0);
 // Discord Oauth
 let oauth = new DiscordOauth2({});
 
-// Discord Client 
+// Discord Client
 let client: Client;
 
-// Plugin Options 
+// Plugin Options
 let plugin_options: PluginOptions;
 
 // Directory where frontend files are;
@@ -297,7 +297,7 @@ me.post(
 			finalAmount
 		});
 		const order = await newOrder.save();
-		notifyOwnerOfNewOrder(order.id, client).catch(pluginLogger.error)
+		notifyOwnerOfNewOrder(order.id, client).catch(pluginLogger.error);
 		return order;
 	})
 );
@@ -315,11 +315,11 @@ export async function initPlugin(options: PluginOptions, discord_client: Client)
 		clientSecret: options.client_secret
 	});
 
-	// Discord Client 
-	client = discord_client
+	// Discord Client
+	client = discord_client;
 
-	// Plugin Options 
-	plugin_options = options
+	// Plugin Options
+	plugin_options = options;
 
 	// Connect To Database
 	await mongoose
@@ -345,16 +345,15 @@ function checkAuth(e: H3Event<EventHandlerRequest>) {
 	}
 }
 
-
 /**
  * Notifying Utils
  */
 
-async function notifyOwnerOfNewOrder (order_id: string, discord_client: Client) {
-	const order = await Order.findById(order_id).exec()
+async function notifyOwnerOfNewOrder(order_id: string, discord_client: Client) {
+	const order = await Order.findById(order_id).exec();
 	const owner = await discord_client.users.fetch(plugin_options.owner_id as Snowflake);
-
+	console.log('notifywnenr', owner);
 	owner.send({
-		content: "New Order Received"
-	})
+		content: 'New Order Received'
+	});
 }

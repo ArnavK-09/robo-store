@@ -28,27 +28,35 @@ export const config: CommandConfig = {
 // Command Execution
 export default async (interaction: CommandInteraction): Promise<CommandResult> => {
 	const productId = interaction.options.get('product')!.value!.toString();
-	const res = await Product.findById(productId).exec();
-	if(!res) return `❌ **No product found with ID**`;
-	else return {
-		embeds: [genProductEmbed({
-			...res.toObject(),  
-			_id: res._id.toString()  
-		  } as ProductType)],
-		components: [
-			new ActionRowBuilder<ButtonBuilder>().addComponents(
-				new ButtonBuilder()
-					.setURL(`https://${options.domain}/store/${res?._id}`)
-					.setLabel('Visit Product On Website')
-					.setStyle(ButtonStyle.Link)
-			)
-		]
-	};
+	const res = await Product.findById(productId)
+		.exec()
+		.catch(() => null);
+	if (!res) return `❌ **No product found with ID**`;
+	else
+		return {
+			embeds: [
+				genProductEmbed({
+					...res.toObject(),
+					_id: res._id.toString()
+				} as ProductType)
+			],
+			components: [
+				new ActionRowBuilder<ButtonBuilder>().addComponents(
+					new ButtonBuilder()
+						.setLabel('Visit Product On Website')
+						.setURL(new URL(`/store/${res?._id}`, options.domain).href)
+						.setStyle(ButtonStyle.Link)
+				)
+			]
+		};
 };
 
 // Listing Products
 export const autocomplete = async (interaction: AutocompleteInteraction) => {
 	const query = interaction.options.get('product')?.value?.toString() ?? '';
-	const listOfProducts = await Product.find().$where(`this.title.includes('${query}')`).exec();
-	return listOfProducts.map((x) => ({ name: x.title, value: x._id }));
+	const listOfProducts = await Product.find().exec();
+	return listOfProducts
+		.filter((x) => x.title.includes(query.trim()))
+		.map((x) => ({ name: x.title, value: x._id }))
+		.slice(0, 24);
 };

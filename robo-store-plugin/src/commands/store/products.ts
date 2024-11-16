@@ -10,8 +10,10 @@ export const config: CommandConfig = {
 
 // Listing Products
 export default async () => {
-	const allProducts = await Product.find();
-	return {
-		embeds: allProducts.map((x) => genProductEmbed(x as ProductType))
-	};
+	const allProducts = await Product.find().catch(() => null);
+	if (!allProducts || allProducts.length == 0) return `😟 There are no products available in the store at the moment.`;
+	else
+		return {
+			embeds: allProducts.map((x) => genProductEmbed(x as any))
+		};
 };

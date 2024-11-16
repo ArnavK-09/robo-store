@@ -21,12 +21,15 @@ export const config: CommandConfig = {
 export default async (interaction: CommandInteraction): Promise<CommandResult> => {
 	const productId = interaction.options.get('product')!.value!.toString();
 	await Product.deleteOne({ _id: productId }).exec();
-	return `🗑️ **Deleted product with ID** '${productId}'`;
+	return `🗑️ **Deleted product with ID** \` ${productId} \``;
 };
 
 // Lisiting Products
 export const autocomplete = async (interaction: AutocompleteInteraction) => {
 	const query = interaction.options.get('product')?.value?.toString() ?? '';
 	const listOfProducts = await Product.find().exec();
-	return listOfProducts.filter((x) => x.title.includes(query)).map((x) => ({ name: x.title, value: x._id }));
+	return listOfProducts
+		.filter((x) => x.title.includes(query))
+		.map((x) => ({ name: x.title, value: x._id }))
+		.slice(0, 24);
 };

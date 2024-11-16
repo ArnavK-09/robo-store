@@ -33,19 +33,19 @@ In the **[`robo-demo/config/plugins/robo-store.mjs`](https://github.com/ArnavK-0
 
 ```javascript
 export default {
-  mongo_uri: "your-mongodb-uri",
-  owner_id: "discord-user-id",
-  store_name: "Your Store Name",
-  domain: "https://yourstore.com",
-  slogan: "Your Store Slogan",
-  hero_image: "link-to-hero-image",
-  about_us: "Description of your store",
-  invite: "Discord invite link",
-  introduction: "Brief intro for new customers",
-  client_secret: "discord-client-secret",
-  client_id: "discord-client-id",
-  currency_symbol: "$",
-  imgbb_api_key: "optional-imgbb-api-key-for-image-hosting",
+	mongo_uri: 'your-mongodb-uri',
+	owner_id: 'discord-user-id',
+	store_name: 'Your Store Name',
+	domain: 'https://yourstore.com',
+	slogan: 'Your Store Slogan',
+	hero_image: 'link-to-hero-image',
+	about_us: 'Description of your store',
+	invite: 'Discord invite link',
+	introduction: 'Brief intro for new customers',
+	client_secret: 'discord-client-secret',
+	client_id: 'discord-client-id',
+	currency_symbol: '$',
+	imgbb_api_key: 'optional-imgbb-api-key-for-image-hosting'
 };
 ```
 

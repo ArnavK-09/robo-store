@@ -179,6 +179,16 @@ Found a bug or need help? Please create an issue on the [GitHub repository](http
   </tbody>
 </table>
 
+## 🗺 Roadmap
+
+<table>
+  <tbody>
+    <tr>
+        <td align="center" valign="top" width="100%">🔒 Payment Wall</td>
+    </tr>
+  </tbody>
+</table>
+
 ---
 
 <h2 align="center">📄 License</h2>

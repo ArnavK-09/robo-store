@@ -29,12 +29,15 @@ export default async (interaction: CommandInteraction): Promise<CommandResult> =
 	const orderId = interaction.options.get('order')!.value!.toString();
 	const newStatus = interaction.options.get('status')!.value!.toString();
 	await Order.updateOne({ _id: orderId }, { status: newStatus }).exec();
-	return `✅ **Order with ID** '${orderId}' **has been updated to** '${newStatus}'`;
+	return `✅ **Order with ID** \` ${orderId} \` **has been updated to** \` ${newStatus} \``;
 };
 
 // Lisiting Orders
 export const autocomplete = async (interaction: AutocompleteInteraction) => {
 	const query = interaction.options.get('order')?.value?.toString() ?? '';
 	const listOfProducts = await Order.find().exec();
-	return listOfProducts.filter((x) => x.primary_id.includes(query)).map((x) => ({ name: x.primary_id, value: x._id }));
+	return listOfProducts
+		.filter((x) => x.primary_id.includes(query))
+		.map((x) => ({ name: x.primary_id, value: x._id }))
+		.slice(0, 24);
 };
