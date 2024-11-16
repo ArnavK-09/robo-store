@@ -43,19 +43,19 @@ To configure your **robo-store** plugin, configure your plugin config with the f
 
 ```javascript
 export default {
-  mongo_uri: "your-mongodb-uri",
-  owner_id: "discord-user-id",
-  store_name: "Your Store Name",
-  domain: "https://yourstore.com",
-  slogan: "Your Store Slogan",
-  hero_image: "link-to-hero-image",
-  about_us: "Description of your store",
-  invite: "Discord invite link",
-  introduction: "Brief intro for new customers",
-  client_secret: "discord-client-secret",
-  client_id: "discord-client-id",
-  currency_symbol: "$",
-  imgbb_api_key: "optional-imgbb-api-key-for-image-hosting",
+	mongo_uri: 'your-mongodb-uri',
+	owner_id: 'discord-user-id',
+	store_name: 'Your Store Name',
+	domain: 'https://yourstore.com',
+	slogan: 'Your Store Slogan',
+	hero_image: 'link-to-hero-image',
+	about_us: 'Description of your store',
+	invite: 'Discord invite link',
+	introduction: 'Brief intro for new customers',
+	client_secret: 'discord-client-secret',
+	client_id: 'discord-client-id',
+	currency_symbol: '$',
+	imgbb_api_key: 'optional-imgbb-api-key-for-image-hosting'
 };
 ```
 
@@ -93,12 +93,17 @@ export default {
 
 ## 🧩 Slash Commands
 
-| Command        | Description                    |
-| -------------- | ------------------------------ |
-| `/store add`   | Add a new product to the store |
-| `/store list`  | List all available products    |
-| `/store order` | Place an order for a product   |
-| `/store help`  | Get help on store commands     |
+| Command                       | Description                                             |
+| ----------------------------- | ------------------------------------------------------- |
+| `/store my-order-info`        | Display a list of all your orders.                      |
+| `/store product-info`         | Retrieve detailed information about a specific product. |
+| `/store products`             | Display a list of all available products.               |
+| `/store admin apply-discount` | Apply a discount to the selected product.               |
+| `/store admin delete`         | Remove a product from the store permanently.            |
+| `/store admin new-product`    | Add a new product to the store.                         |
+| `/store admin order-info`     | Retrieve detailed information about a specific order.   |
+| `/store admin order-status`   | Update the status of an existing order.                 |
+| `/store admin stockout`       | Mark a product as out of stock or back in stock.        |
 
 ## 🚀 Backend API
 
