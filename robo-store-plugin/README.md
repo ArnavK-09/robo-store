@@ -150,7 +150,7 @@ export default {
 
 | Cart Preview                                                |
 | ----------------------------------------------------------- |
-| ![Cart Preview](https://github.com/ArnavK-09/robo-store/raw/refs/heads/main/robo-store-screenshots/cart_preview.png) |
+| ![Cart Preview](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-screenshots/cart_preview.png) |
 
 | Store My Order Info                                                       |
 | ------------------------------------------------------------------------- |
