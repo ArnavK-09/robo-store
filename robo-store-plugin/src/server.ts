@@ -8,7 +8,6 @@ import {
 	getCookie,
 	getQuery,
 	getRouterParam,
-	readValidatedBody,
 	H3Event,
 	sendRedirect,
 	serveStatic,
@@ -26,7 +25,7 @@ import { stat, readFile } from 'node:fs/promises';
 import { join } from 'path';
 import mongoose from 'mongoose';
 import { Order, Product, ProductType } from './database';
-import { Client, Options, Snowflake } from 'discord.js';
+import { Client, Snowflake } from 'discord.js';
 
 // Sum of array
 export const sum = (arr: number[]) => arr.reduce((a, b) => a + b, 0);
@@ -116,7 +115,7 @@ api.get(
 	})
 );
 
-// GET Callback
+// GET Callback @TODO
 api.get(
 	'/callback',
 	defineEventHandler(async (e) => {
@@ -210,8 +209,15 @@ me.get(
 	defineEventHandler(async (e) => {
 		const access_token = getCookie(e, 'access_token');
 		checkAuth(e);
-		const { id, global_name, username, email, verified } = await oauth.getUser(access_token!);
-		return { id, global_name, username, email, verified };
+		try {
+			const { id, global_name, username, email, verified } = await oauth.getUser(access_token!);
+			return { id, global_name, username, email, verified };
+		} catch {
+			setResponseStatus(e, 401);
+			return {
+				message: 'Invalid Access Token'
+			};
+		}
 	})
 );
 

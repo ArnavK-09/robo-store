@@ -28,7 +28,7 @@ export const config: CommandConfig = {
 		{
 			name: 'image',
 			description: 'An image of the product.',
-			type: 'attachment',
+			type: 'string',
 			required: true
 		},
 		{
@@ -41,7 +41,11 @@ export const config: CommandConfig = {
 
 // Command Execution
 export default async (interaction: CommandInteraction, options: CommandOptions<typeof config>) => {
-	let img_url: string = interaction.options.getAttachment('image', true).attachment;
+	let img_url: string = interaction.options.get('image')?.value as string;
+
+	try {
+		img_url = new URL(img_url).href;
+	} catch {}
 
 	if (pluginOptions?.imgbb_api_key) {
 		try {
@@ -66,5 +70,5 @@ export default async (interaction: CommandInteraction, options: CommandOptions<t
 		image: img_url
 	});
 	const res = await newProduct.save();
-	return `✅ **Product** \` ${res.title} \` **saved!**\n\n**Details:**\n- **Description:** \` ${res.description} \`\n- **Category:** \` ${res.category} \`\n- **Price:** \` ${res.price} \`\n- **Image URL:** [\` ${res.image} \`](${res.image})`;
+	return `✅ **Product** \` ${res.title} \` **saved!**\n\n**Details:**\n- **Description:** \` ${res.description} \`\n- **Category:** \` ${res.category} \`\n- **Price:** \` ${res.price} \`\n- **Image URL:** ${res.image}`;
 };

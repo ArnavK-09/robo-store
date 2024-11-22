@@ -2,7 +2,6 @@
   import { onMount } from "svelte";
   import Tagline from "@/components/tagline.svelte";
   import Store from "@/components/shop.svelte";
-  import Loading from "./loading.svelte";
   import { type StoreProduct, storeDetails, cart } from "@/store/basics";
   import { writable } from "svelte/store";
   let productId: string | null = null;
@@ -161,13 +160,23 @@
               &minus;
             </button>
           </div>
-          <button
-            on:click={addProductToCart}
-            disabled={!!productThere}
-            class="mt-4 disabled:opacity-50 hover:scale-[1.02] transition ease-in-out lg:mt-1 bg-[#365de5] w-full tracking-tighter text-2xl uppercase select-none rounded-xl py-6 text-center font-bold"
-          >
-            {!!productThere ? "ALREADY IN CART" : "ADD TO CART"}
-          </button>
+
+          {#if $product.stockout}
+            <button
+              disabled={true}
+              class="mt-4 disabled:opacity-50 hover:scale-[1.02] transition ease-in-out lg:mt-1 bg-red-600 w-full tracking-tighter text-2xl uppercase select-none rounded-xl py-6 text-center font-bold"
+            >
+              OUT OF STOCK
+            </button>
+          {:else}
+            <button
+              on:click={addProductToCart}
+              disabled={!!productThere}
+              class="mt-4 disabled:opacity-50 hover:scale-[1.02] transition ease-in-out lg:mt-1 bg-[#365de5] w-full tracking-tighter text-2xl uppercase select-none rounded-xl py-6 text-center font-bold"
+            >
+              {!!productThere ? "ALREADY IN CART" : "ADD TO CART"}
+            </button>
+          {/if}
         </div>
       </div>
     </div>
