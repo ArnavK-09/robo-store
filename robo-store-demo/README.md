@@ -12,12 +12,12 @@
 
 ## 🎯 Demo Configuration
 
-In the **[`robo-demo/config/plugins/robo-store.mjs`](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-demo/config/plugins/robo-store.mjs)** file, you'll find a sample configuration for the **robo-store plugin**. This includes default settings and options that can be easily customized to match your store's needs.
+In the **[`robo-demo/config/plugins/robo-store.mjs`](https://github.com/ArnavK-09/robo-store/blob/main/robo-screenshots/robo-store-demo/config/plugins/robo-store.mjs)** file, you'll find a sample configuration for the **robo-store plugin**. This includes default settings and options that can be easily customized to match your store's needs.
 
 ### How to Use
 
 1. **Customize the Configuration**:
-   Open the **[`robo-demo/config/plugins/robo-store.mjs`](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-demo/config/plugins/robo-store.mjs)** file and update the following options:
+   Open the **[`robo-demo/config/plugins/robo-store.mjs`](https://github.com/ArnavK-09/robo-store/blob/main/robo-screenshots/robo-store-demo/config/plugins/robo-store.mjs)** file and update the following options:
 
    - `store_name`: Set your store's name.
    - `domain`: Your storefront domain.
