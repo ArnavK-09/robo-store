@@ -1,7 +1,7 @@
 {
 	"name": "robo-store",
-	"description": "🛒 Minimal store plugin for Robo.js with backend api & storefront... ",
-	"version": "0.0.1",
+	"description": "🛒 Minimal store plugin for Robo.js with backend api & storefront...",
+	"version": "0.0.2",
 	"type": "module",
 	"private": false,
 	"keywords": [
