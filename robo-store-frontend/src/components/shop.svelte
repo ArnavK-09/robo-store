@@ -64,7 +64,7 @@
             >
               <img
                 draggable="false"
-                class="h-full group-hover:scale-[1.02] transition ease-in-out duration-[270ms] w-full"
+                class="h-full group-hover:scale-[1.02] rounded-xl transition ease-in-out duration-[270ms] w-full"
                 alt="product"
                 src={product.image}
               />
@@ -81,11 +81,11 @@
                 >{product.title}</strong
               >
               <strong class="font-bold text-green-500 text-md md:text-lg"
-                >${finalPrice}
+                >{$storeDetails.currency_symbol}{finalPrice}
                 {#if finalPrice !== product.price}
                   <span
                     class="text-xs font-thin ml-1 line-through text-white/40 tracking-normal"
-                    >${product.price}</span
+                    >{$storeDetails.currency_symbol}{product.price}</span
                   >
                 {/if}
               </strong>

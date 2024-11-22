@@ -52,7 +52,6 @@ export default async (interaction: CommandInteraction, options: CommandOptions<t
 			const res = await fetch(`https://api.imgbb.com/1/upload?key=${pluginOptions.imgbb_api_key}&image=${img_url}`, {
 				method: 'POST'
 			});
-			console.log(`https://api.imgbb.com/1/upload?key=${pluginOptions.imgbb_api_key}&image=${img_url}`);
 			if (res.ok) {
 				const data = (await res.json()) as { display_url?: string };
 				if (data.display_url) {

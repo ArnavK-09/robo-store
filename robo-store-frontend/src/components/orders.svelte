@@ -2,7 +2,7 @@
   import { User } from "@/store/user";
   import { writable } from "svelte/store";
   import { onMount } from "svelte";
-
+  import { storeDetails } from "@/store/basics";
   const userOrders = writable([]);
 
   onMount(async () => {
@@ -12,7 +12,6 @@
     const response = await fetch("/api/@me/orders");
     if (response.ok) {
       const data = await response.json();
-      console.log(34, data);
       userOrders.set(data);
     } else {
       alert("Internal Error");
@@ -64,11 +63,11 @@
           </td>
           <td class="p-4 border-b">
             <p
-                  class="block antialiased font-sans text-sm leading-normal font-normal">${order.totalAmount}</p>
+                  class="block antialiased font-sans text-sm leading-normal font-normal">{$storeDetails.currency_symbol}{order.totalAmount}</p>
           </td>
           <td class="p-4 border-b">
             <p
-                  class="block antialiased font-sans text-sm leading-normal font-normal">{order.finalAmount}</p>
+                  class="block antialiased font-sans text-sm leading-normal font-normal">{$storeDetails.currency_symbol}{order.finalAmount}</p>
           </td>
           <td class="p-4 border-b">
             <div class="w-max">

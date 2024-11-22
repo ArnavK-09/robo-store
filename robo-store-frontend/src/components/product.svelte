@@ -88,7 +88,7 @@
         >
           <img
             draggable="false"
-            class="h-full w-auto lg:h-[70%] group-hover:scale-[1.02] transition ease-in-out duration-[270ms]"
+            class="h-full w-auto lg:h-[88%] group-hover:scale-[1.02] transition ease-in-out duration-[270ms] rounded-2xl"
             alt="product"
             src={$product.image}
           />
