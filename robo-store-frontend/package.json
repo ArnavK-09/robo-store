@@ -1,7 +1,7 @@
 {
   "name": "robo-store-frontend",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "author": "ArnavK-09 <arnavkaushal09@gmail.com> (https://github.com/ArnavK-09)",
   "scripts": {
     "dev": "astro dev",

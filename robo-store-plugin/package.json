@@ -17,7 +17,7 @@
 	"author": "ArnavK-09 <arnavkaushal09@gmail.com> (https://github.com/ArnavK-09)",
 	"files": [
 		".robo/",
-		"seed",
+		"seed/",
 		"src/",
 		"LICENSE",
 		"README.md"
