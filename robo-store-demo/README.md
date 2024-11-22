@@ -2,7 +2,7 @@
 <h2 align="center">Demo of robo-store plugin</h2>
 
 <p align="center">
-    <img alt="hero" width="450" src="https://fav.farm/🛒" />
+    <img alt="hero" width="450" src="https://emoji-route.deno.dev/🛒" />
 </p>
 
 > [!NOTE]

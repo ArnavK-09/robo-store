@@ -2,7 +2,7 @@
 <h2 align="center">Robo.js Plugin</h2>
 
 <p align="center">
-    <img alt="hero" width="450" src="https://fav.farm/🛒" />
+    <img alt="hero" width="450" src="https://emoji-route.deno.dev/🛒" />
 </p>
 
 > [!NOTE]
