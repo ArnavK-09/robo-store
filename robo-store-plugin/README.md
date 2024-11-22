@@ -134,51 +134,51 @@ export default {
 
 | Hero Section                                                |
 | ----------------------------------------------------------- |
-| ![Hero Section](https://github.com/ArnavK-09/robo-store/raw/refs/heads/main/robo-store-screenshots/hero%20section.webp) |
+| ![Hero Section](https://github.com/ArnavK-09/robo-store/raw/refs/heads/main/robo-store-screenshots/hero_section.webp) |
 
 | Shop Products Page                                                        |
 | ------------------------------------------------------------------------- |
-| ![Shop Products Page](https://github.com/ArnavK-09/robo-store/raw/refs/heads/main/robo-store-screenshots/shop%20products%20page.webp) |
+| ![Shop Products Page](https://github.com/ArnavK-09/robo-store/raw/refs/heads/main/robo-store-screenshots/shop_products_page.webp) |
 
 | Product Page                                                |
 | ----------------------------------------------------------- |
-| ![Product Page](https://github.com/ArnavK-09/robo-store-screenshots/product%20page.webp) |
+| ![Product Page](https://github.com/ArnavK-09/robo-store-screenshots/product_page.webp) |
 
 | Out of Stock Product Page                                                                   |
 | ------------------------------------------------------------------------------------------- |
-| ![Out of Stock Product Page](https://github.com/ArnavK-09/robo-store-screenshots/out%20of%20stock%20product%20page.webp) |
+| ![Out of Stock Product Page](https://github.com/ArnavK-09/robo-store-screenshots/out_of_stock_product_page.webp) |
 
 | Cart Preview                                                |
 | ----------------------------------------------------------- |
-| ![Cart Preview](https://github.com/ArnavK-09/robo-store-screenshots/cart%20preview.webp) |
+| ![Cart Preview](https://github.com/ArnavK-09/robo-store-screenshots/cart_preview.webp) |
 
 | Store My Order Info                                                       |
 | ------------------------------------------------------------------------- |
-| ![Store My Order Info](https://github.com/ArnavK-09/robo-store-screenshots/store%20my-order-info.webp) |
+| ![Store My Order Info](https://github.com/ArnavK-09/robo-store-screenshots/store_my-order-info.webp) |
 
 | New Order Received Notification                                                                      |
 | ---------------------------------------------------------------------------------------------------- |
-| ![New Order Received Notification](https://github.com/ArnavK-09/robo-store-screenshots/new%20order%20recived%20notification.webp) |
+| ![New Order Received Notification](https://github.com/ArnavK-09/robo-store-screenshots/new_order_recived_notification.webp) |
 
 | User Account on Storefront                                                                  |
 | ------------------------------------------------------------------------------------------- |
-| ![User Account on Storefront](https://github.com/ArnavK-09/robo-store-screenshots/user%20account%20on%20storefront.webp) |
+| ![User Account on Storefront](https://github.com/ArnavK-09/robo-store-screenshots/user_account_on_storefront.webp) |
 
 | Store Admin Apply Discount                                                                |
 | ----------------------------------------------------------------------------------------- |
-| ![Store Admin Apply Discount](https://github.com/ArnavK-09/robo-store-screenshots/store%20admin%20apply-discount.webp) |
+| ![Store Admin Apply Discount](https://github.com/ArnavK-09/robo-store-screenshots/store_admin_apply-discount.webp) |
 
 | Store Admin New Product                                                             |
 | ----------------------------------------------------------------------------------- |
-| ![Store Admin New Product](https://github.com/ArnavK-09/robo-store-screenshots/store%20admin%20new-product.webp) |
+| ![Store Admin New Product](https://github.com/ArnavK-09/robo-store-screenshots/store_admin_new-product.webp) |
 
 | Store Admin Order Status                                                              |
 | ------------------------------------------------------------------------------------- |
-| ![Store Admin Order Status](https://github.com/ArnavK-09/robo-store-screenshots/store%20admin%20order-status.webp) |
+| ![Store Admin Order Status](https://github.com/ArnavK-09/robo-store-screenshots/store_admin_order-status.webp) |
 
 | Store Admin Stockout                                                          |
 | ----------------------------------------------------------------------------- |
-| ![Store Admin Stockout](https://github.com/ArnavK-09/robo-store-screenshots/store%20admin%20stockout.webp) |
+| ![Store Admin Stockout](https://github.com/ArnavK-09/robo-store-screenshots/store_admin_stockout.webp) |
 
 | Website                                         |
 | ----------------------------------------------- |
