@@ -1,8 +1,7 @@
 {
 	"name": "robo-store-demo",
 	"description": "",
-	"author": "ArnavK-09 <arnavkaushal09@gmail.com> (https://github.com/ArnavK-09)",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"type": "module",
 	"private": true,
 	"keywords": [
@@ -19,20 +18,19 @@
 		"dev": "robox dev",
 		"doctor": "sage doctor",
 		"invite": "robo invite",
-		"fmt": "prettier --write .",
+		"lint:style": "prettier --write .",
 		"start": "robo start",
 		"upgrade": "sage upgrade"
 	},
 	"dependencies": {
 		"discord.js": "^14.16.3",
-		"robo-store": "file:../robo-store-plugin",
-		"robo.js": "^0.10.22",
-		"zod": "^3.23.8"
+		"robo-store": "^0.0.1",
+		"robo.js": "^0.10.26"
 	},
 	"devDependencies": {
-		"@swc/core": "^1.7.26",
+		"@swc/core": "^1.9.3",
 		"@types/node": "^22.9.1",
 		"prettier": "^3.3.3",
-		"typescript": "^5.6.3"
+		"typescript": "^5.7.2"
 	}
 }
