@@ -1,4 +1,4 @@
-<h1 align="center">🛒 Robo Store Plugin 🛒</h1>
+<h1 align="center">🛒 Robo Store 🛒</h1>
 <h2 align="center">Robo.js Plugin</h2>
 
 <p align="center">
