@@ -2,7 +2,7 @@
 <h2 align="center">Minimalist eCommerce Storefront for Robo Store Plugin</h2>
 
 <p align="center">
-    <img alt="hero" width="450" src="https://emoji-route.deno.dev/🛒" />
+    <img alt="hero" width="450" src="https://emoji-route.deno.dev/svg/🛒" />
 </p>
 
 > [!NOTE]

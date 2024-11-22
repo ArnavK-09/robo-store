@@ -2,7 +2,7 @@
 <h2 align="center">Demo of robo-store plugin</h2>
 
 <p align="center">
-    <img alt="hero" width="450" src="https://emoji-route.deno.dev/🛒" />
+    <img alt="hero" width="450" src="https://emoji-route.deno.dev/svg/🛒" />
 </p>
 
 > [!NOTE]
@@ -81,7 +81,7 @@ export default {
 
 <h2 align="center">💖 Thanks for Using robo-store!</h2>
 <p align="center">
-Thank you for choosing **robo-store**! We hope this plugin helps you build an amazing eCommerce experience on Discord.
+Thank you for choosing <strong>robo-store</strong>! We hope this plugin helps you build an amazing eCommerce experience on Discord.
 </p>
 
 ---
