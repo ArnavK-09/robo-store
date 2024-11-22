@@ -12,6 +12,14 @@
 		"robo.js",
 		"typescript"
 	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ArnavK-09/robo-store.git"
+	},
+	"bugs": {
+		"url": "https://github.com/ArnavK-09/robo-store/issues"
+	},
+	"homepage": "https://github.com/ArnavK-09/robo-store#readme",
 	"main": ".robo/build/index.js",
 	"license": "MIT",
 	"author": "ArnavK-09 <arnavkaushal09@gmail.com> (https://github.com/ArnavK-09)",
