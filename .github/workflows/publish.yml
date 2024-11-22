@@ -1,0 +1,39 @@
+name: 🚀 Build and Publish!
+
+on:
+  release:
+    types: [published]
+    branches:
+      - main
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20' 
+
+    - name: Install dependencies and build robo-store-frontend
+      working-directory: ./robo-store-frontend
+      run: |
+        npm i
+        npm run build
+
+    - name: Install dependencies and build robo-store-plugin
+      working-directory: ./robo-store-plugin
+      run: |
+        npm i
+        npm run build
+
+    - name: Publish robo-store-plugin to npm
+      working-directory: ./robo-store-plugin
+      run: |
+        npm publish --access public
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

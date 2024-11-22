@@ -13,4 +13,5 @@ export default interface PluginOptions {
 	client_id?: string;
 	currency_symbol?: string;
 	imgbb_api_key?: string;
+	port?: number;
 }

@@ -105,7 +105,7 @@
           <div class="block my-auto">
             <strong
               class="px-4 text-black mb-4 text-xl tracking-tight uppercase select-none bg-yellow-400 rounded-lg"
-              >{$product.category}
+              >{$product.category ?? "Uncategorized"}
             </strong>
             <h2 class="text-white uppercase text-4xl lg:text-5xl font-black">
               {$product.title}

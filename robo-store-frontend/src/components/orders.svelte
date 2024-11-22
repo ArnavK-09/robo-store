@@ -19,32 +19,95 @@
       window.location.replace(`?error`);
     }
   });
-
-  /**
-  
-{
-  "_id": "671fd225c516bc59ccc2e8b9",
-  "buyer": "739454321661313025",
-  "payment_done": false,
-  "totalAmount": 138,
-  "finalAmount": 14,
-  "status": "pending",
-  "products": [
-    {
-      "product": "671372903bbe7abcff5ad76f",
-      "quantity": 2,
-      "_id": "671fd225c516bc59ccc2e8ba",
-    },
-  ],
-  "primary_id": "Na4VeaUQ",
-  "orderedAt": "2024-10-28T18:04:21.228Z",
-  "__v": 0,
-}
-Array^^^
-
- */
 </script>
 
 <pre>
-    {JSON.stringify($userOrders)}
-</pre>
+    <div
+    class="flex h-auto items-center w-[98vw] justify-center brightness-110">
+      <div class="px-2 overflow-scroll">
+    <table class="w-full min-w-max table-auto text-center">
+      <thead>
+        <tr>
+          <th class="border-y p-4">
+            <p
+                class="block antialiased font-sans text-sm font-normal leading-none opacity-70">ID</p>
+          </th>
+          <th class="border-y p-4">
+            <p
+                class="block antialiased font-sans text-sm font-normal leading-none opacity-70">Total Amount</p>
+          </th>
+          <th class="border-y p-4">
+            <p
+                class="block antialiased font-sans text-sm font-normal leading-none opacity-70">Discounted Amount</p>
+          </th>
+          <th class="border-y p-4">
+            <p
+                class="block antialiased font-sans text-sm font-normal leading-none opacity-70">Status</p>
+          </th>
+          <th class="border-y p-4">
+            <p
+                class="block antialiased font-sans text-sm font-normal leading-none opacity-70">Ordered At</p>
+          </th> <th class="border-y p-4">
+            <p
+                class="block antialiased font-sans text-sm font-normal leading-none opacity-70">Product IDs</p>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+
+    {#each $userOrders as order (order._id)}
+            <tr>
+          <td class="p-4 border-b">
+              <p
+                  class="block antialiased font-sans text-sm leading-normal font-bold">{order.primary_id}</p>
+        
+          </td>
+          <td class="p-4 border-b">
+            <p
+                  class="block antialiased font-sans text-sm leading-normal font-normal">${order.totalAmount}</p>
+          </td>
+          <td class="p-4 border-b">
+            <p
+                  class="block antialiased font-sans text-sm leading-normal font-normal">{order.finalAmount}</p>
+          </td>
+          <td class="p-4 border-b">
+            <div class="w-max">
+              <div
+                    class={`relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none py-1 px-2 text-xs rounded-md 
+                ${order.status === "pending" ? "bg-yellow-500/20 text-yellow-900" : ""}
+                ${order.status === "shipped" ? "bg-blue-500/20 text-blue-900" : ""}
+                ${order.status === "delivered" ? "bg-green-500/20 text-green-900" : ""}
+                ${order.status === "canceled" ? "bg-red-500/20 text-red-900" : ""}`}>
+                <span>{order.status}</span>
+              </div>
+            </div>
+          </td>
+          <td class="p-4 border-b">
+            <div class="w-max">
+              <div
+                    class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-white/20 text-white py-1 px-2 text-xs rounded-md"
+                    style="opacity: 1;">
+                <span
+                      >{new Date(
+                        `${order.orderedAt}`,
+                      ).toLocaleDateString()}</span
+                    >
+              </div>
+            </div>
+          </td>
+          <td class="p-4 border-b">
+            <p
+                  class="block antialiased font-sans text-sm leading-normal font-bold">{order.products
+                    .map(
+                      (product) => `(${product.quantity}) ${product.product}`,
+                    )
+                    .join(",")}</p>
+      
+        </td>
+        </tr>
+          {/each}
+      </tbody>
+    </table>
+    </div>
+
+</div></pre>

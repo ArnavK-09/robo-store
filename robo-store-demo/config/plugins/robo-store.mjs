@@ -1,8 +1,8 @@
 export default {
 	mongo_uri: process.env.MONGO_URI,
 	owner_id: '739454321661313025',
-	store_name: 'Your Store Name',
-	domain: '3000-idx-robo-store-1730484819728.cluster-3g4scxt2njdd6uovkqyfcabgo6.cloudworkstations.dev',
+	store_name: 'WristWatchers',
+	domain: '6969-idx-robo-store-1730484819728.cluster-3g4scxt2njdd6uovkqyfcabgo6.cloudworkstations.dev',
 	slogan: 'Tick-Tock! Grab Your Favorite Watch at Unbeatable Prices!',
 	hero_image: 'https://wallpaperaccess.com/full/6301384.jpg',
 	about_us: `At WristWatchers, we understand that a watch is not just a tool for telling time; it's a personal statement that reflects your style and individuality. Established in 2024, our brand was born out of a passion for horology and a commitment to crafting exceptional timepieces that seamlessly blend quality, functionality, and elegance. Each watch in our diverse collection is meticulously designed and manufactured using the finest materials, ensuring not only stunning aesthetics but also lasting durability. From classic dress watches that exude sophistication to rugged sports models built for adventure, we cater to every taste and occasion, helping you find the perfect companion for life's moments. Our relentless pursuit of excellence drives us to innovate continuously, refining our designs to meet the evolving needs of our customers. At **WristWatchers**, customer satisfaction is paramount; we strive to provide an exceptional shopping experience and stand ready to assist you in your journey to find the ideal watch. Join the **WristWatchers** community, where we celebrate the art of watchmaking and invite you to embrace every moment with confidence and style`,
@@ -11,5 +11,6 @@ export default {
 	client_secret: process.env.DISCORD_CLIENT_SECRET,
 	client_id: process.env.DISCORD_CLIENT_ID,
 	currency_symbol: '$',
-	imgbb_api_key: '695eb755ef7f43e09a21d3f029804fea'
+	// imgbb_api_key: process.env.IMGBB_API_KEY,
+	port: 6969
 };

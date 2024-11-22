@@ -22,13 +22,14 @@ export default async (client: Client, pluginOptions: PluginOptions) => {
 	pluginOptions.client_id ??= process.env.DISCORD_CLIENT_ID;
 	pluginOptions.mongo_uri ??= process.env.MONGO_URI;
 	pluginOptions.currency_symbol ??= '$';
+	pluginOptions.port ??= 3000;
 
 	// Assigning Options
 	options = pluginOptions;
 	pluginLogger.debug('Plugin Specified Options:- ' + JSON.stringify(options));
 
 	// Starting mongo server & plugin
-	pluginLogger.event('Initializing processes...At:- https://localhost:' + 3000);
+	pluginLogger.event('Initializing processes...');
 	await initPlugin(options, client).catch((err) => {
 		pluginLogger.error(err);
 	});

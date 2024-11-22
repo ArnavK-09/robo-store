@@ -1,24 +1,31 @@
 // Imports required
 import { EmbedBuilder } from 'discord.js';
 import { OrderType, ProductType } from '../database';
+import { options } from '../events/_start';
+
+export const sanitizeURL = (url: string) =>
+	url.startsWith('http://') || url.startsWith('https://') ? url : 'https://' + url;
 
 // Generating Product Embed for Preview in Discord Chat
 export const genProductEmbed = (product: ProductType): EmbedBuilder => {
-	return (
-		new EmbedBuilder()
-			.setColor('#5865F2')
-			.setTitle(product.title)
-			// .setURL(new URL(`/store/${product._id}`, options.domain).href)
-			.setAuthor({ name: product.stockout ? 'Product Not Available :(' : 'Product Available :)' })
-			.setDescription(product.description ?? 'No product description available.')
-			.addFields(
-				{ name: 'Price', value: `$${product.price.toFixed(2)}`, inline: true },
-				{ name: 'Discount', value: `${product.discount}%`, inline: true },
-				{ name: 'Category', value: product.category ?? 'Uncategorized', inline: true }
-			)
-			.setImage(product.image)
-			.setFooter({ text: `Created On: ${product.createdAt.toDateString()}` })
-	);
+	const embed = new EmbedBuilder()
+		.setColor('#5865F2')
+		.setTitle(product.title)
+		.setAuthor({ name: product.stockout ? 'Product Not Available :(' : 'Product Available :)' })
+		.setDescription(product.description ?? 'No product description available.')
+		.addFields(
+			{ name: 'Price', value: `$${product.price.toFixed(2)}`, inline: true },
+			{ name: 'Discount', value: `${product.discount}%`, inline: true },
+			{ name: 'Category', value: product.category ?? 'Uncategorized', inline: true }
+		)
+		.setImage(product.image)
+		.setFooter({ text: `Created On: ${product.createdAt.toDateString()}` });
+
+	try {
+		embed.setURL(new URL(sanitizeURL(options.domain)).href + `/product?id=${product._id}`);
+	} catch {}
+
+	return embed;
 };
 
 // Generating Order Embed for Preview in Discord Chat

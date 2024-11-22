@@ -55,7 +55,8 @@ export default {
 	client_secret: 'discord-client-secret',
 	client_id: 'discord-client-id',
 	currency_symbol: '$',
-	imgbb_api_key: 'optional-imgbb-api-key-for-image-hosting'
+	imgbb_api_key: 'optional-imgbb-api-key-for-image-hosting',
+	port: 6969
 };
 ```
 
@@ -71,6 +72,7 @@ export default {
 | `store_name`      | `string` | Display name of your store.                                              | "Store"                                                                                              | Yes       |
 | `domain`          | `string` | Domain of your storefront. Used for product links and site navigation.   | None                                                                                                 | Yes       |
 | `slogan`          | `string` | A catchy slogan for your store to attract customers.                     | "Grab The Products Now..."                                                                           | No        |
+| `port`            | `number` | Deploy storefront and API to the host with port configuration.           | 3000                                                                                                 | No        |
 | `hero_image`      | `string` | Link to a hero image displayed prominently on your store’s landing page. | None                                                                                                 | No        |
 | `about_us`        | `string` | A paragraph describing your store and its community-driven value.        | "Welcome to our exclusive store, where premium products meet a close-knit community..."              | No        |
 | `invite`          | `string` | Discord invite link for users to join your community.                    | `https://discord.com/users/${pluginOptions.owner_id}`                                                | No        |

@@ -7,6 +7,7 @@ declare global {
 			NODE_OPTIONS: string;
 			DISCORD_CLIENT_SECRET: string;
 			MONGO_URI: string;
+			IMGBB_API_KEY: string;
 		}
 	}
 }

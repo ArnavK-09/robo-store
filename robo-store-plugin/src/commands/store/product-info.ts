@@ -8,7 +8,7 @@ import {
 	ButtonBuilder,
 	ButtonStyle
 } from 'discord.js';
-import { genProductEmbed } from '../../utils/embed';
+import { genProductEmbed, sanitizeURL } from '../../utils/embed';
 import { options } from '../../events/_start';
 
 // Command Config
@@ -44,7 +44,7 @@ export default async (interaction: CommandInteraction): Promise<CommandResult> =
 				new ActionRowBuilder<ButtonBuilder>().addComponents(
 					new ButtonBuilder()
 						.setLabel('Visit Product On Website')
-						.setURL(new URL(`/store/${res?._id}`, options.domain).href)
+						.setURL(new URL(`/product?id=${res?._id}`, sanitizeURL(options.domain)).href)
 						.setStyle(ButtonStyle.Link)
 				)
 			]

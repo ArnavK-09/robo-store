@@ -128,8 +128,6 @@ api.get(
 			};
 		}
 
-		console.log('code ', code);
-
 		const data = await oauth.tokenRequest({
 			code: code.toString(),
 			scope: ['identify', 'email'],
@@ -137,7 +135,6 @@ api.get(
 			clientSecret: plugin_options.client_secret
 		});
 
-		console.log(data);
 		setCookie(e, 'access_token', data.access_token, { secure: true, maxAge: data.expires_in });
 		setCookie(e, 'refresh_token', data.refresh_token, { secure: true, maxAge: data.expires_in });
 
@@ -335,7 +332,8 @@ export async function initPlugin(options: PluginOptions, discord_client: Client)
 
 	// Start Server
 	const server = http.createServer(toNodeListener(app));
-	server.listen(3000);
+	server.listen(options.port!);
+	pluginLogger.ready(`Storefront accessible at:- https://localhost:${options.port!}`);
 }
 
 /**
@@ -356,10 +354,23 @@ function checkAuth(e: H3Event<EventHandlerRequest>) {
  */
 
 async function notifyOwnerOfNewOrder(order_id: string, discord_client: Client) {
-	const order = await Order.findById(order_id).exec();
+	const res = await Order.findById(order_id).exec();
 	const owner = await discord_client.users.fetch(plugin_options.owner_id as Snowflake);
-	console.log('notifywnenr', owner);
+
+	if (!res) {
+		owner.send({
+			content: `❌ **Faied to fetch information about newly created order with ID** '${order_id}'`
+		});
+		return;
+	}
+	let allProducts = await Promise.all(
+		res.products.map(async (x: any) => {
+			const product = await Product.findById(x.product._id).exec();
+			return { product, quantity: x.quantity };
+		})
+	);
+	allProducts = allProducts.filter(Boolean);
 	owner.send({
-		content: 'New Order Received'
+		content: `📦 **New Order RECIEVED:**\n\n**Order ID:** \`${res.primary_id}\`\n**Buyer:** \`${res.buyer}\` | <@${res.buyer}>\n**Payment Status:** \`${res.payment_done ? 'Completed' : 'Pending'}\`\n**Total Amount:** \`${res.totalAmount}\`\n**Status:** \`${res.status}\`\n**Ordered At:** \`${res.orderedAt.toLocaleString()}\`\n**Products:**${allProducts.map((x) => `\n- Name: \` ${x.product?.title} \` | Qty:- \` ${x.quantity} \` | ProductID:- \` ${x.product?._id} \` `)}`
 	});
 }
