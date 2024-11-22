@@ -138,7 +138,7 @@ export default {
 
 | Shop Products Page                                                        |
 | ------------------------------------------------------------------------- |
-| ![Shop Products Page](https://github.com/ArnavK-09/robo-store-screenshots/shop%20products%20page.webp) |
+| ![Shop Products Page](https://github.com/ArnavK-09/robo-store/raw/refs/heads/main/robo-store-screenshots/shop%20products%20page.webp) |
 
 | Product Page                                                |
 | ----------------------------------------------------------- |
