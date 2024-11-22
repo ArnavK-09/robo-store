@@ -134,7 +134,7 @@ export default {
 
 | Hero Section                                                |
 | ----------------------------------------------------------- |
-| ![Hero Section](robo-store-screenshots/hero%20section.webp) |
+| ![Hero Section](https://github.com/ArnavK-09/robo-store/raw/refs/heads/main/robo-store-screenshots/hero%20section.webp) |
 
 | Shop Products Page                                                        |
 | ------------------------------------------------------------------------- |
