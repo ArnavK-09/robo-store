@@ -14,7 +14,7 @@ export const genProductEmbed = (product: ProductType): EmbedBuilder => {
 		.setAuthor({ name: product.stockout ? 'Product Not Available :(' : 'Product Available :)' })
 		.setDescription(product.description ?? 'No product description available.')
 		.addFields(
-			{ name: 'Price', value: `$${product.price.toFixed(2)}`, inline: true },
+			{ name: 'Price', value: `${options.currency_symbol}${product.price.toFixed(2)}`, inline: true },
 			{ name: 'Discount', value: `${product.discount}%`, inline: true },
 			{ name: 'Category', value: product.category ?? 'Uncategorized', inline: true }
 		)
