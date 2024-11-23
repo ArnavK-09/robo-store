@@ -130,7 +130,10 @@ export default {
 
 ## 🎥 Demo
 
-(todo)
+
+###### [robo-store-screenshots/robo-store.mp4](https://github.com/ArnavK-09/robo-store/raw/refs/heads/main/robo-store-screenshots/robo-store.mp4)
+
+https://github.com/user-attachments/assets/2332de81-c31b-4415-b5fe-a887dd9c4f6f
 
 
 ## 📷 Screenshots
