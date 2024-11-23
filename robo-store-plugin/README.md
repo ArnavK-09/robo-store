@@ -40,7 +40,7 @@ bun robo add robo-store
 
 To configure your **robo-store** plugin, configure your plugin config with the following options:
 
-###### [/config/plugins/robo-store.mjs](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-demo/config/plugins/robo-store.mjs)
+###### [/config/plugins/robo-store.ts](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-demo/config/plugins/robo-store.ts)
 
 ```javascript
 export default {
@@ -83,7 +83,7 @@ export default {
 | `currency_symbol` | `string` | Currency symbol for prices.                                              | "$"                                                                                                  | No        |
 | `imgbb_api_key`   | `string` | API key for ImgBB if you want to host images externally.                 | None                                                                                                 | No        |
 
-> **Check out the [example configuration file](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-demo/config/plugins/robo-store.mjs) for more details.**
+> **Check out the [example configuration file](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-demo/config/plugins/robo-store.ts) for more details.**
 
 ## 🚀 Quick Start
 
