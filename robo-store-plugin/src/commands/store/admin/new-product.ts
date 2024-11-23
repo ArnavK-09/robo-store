@@ -69,5 +69,5 @@ export default async (interaction: CommandInteraction, options: CommandOptions<t
 		image: img_url
 	});
 	const res = await newProduct.save();
-	return `✅ **Product** \` ${res.title} \` **saved!**\n\n**Details:**\n- **Description:** \` ${res.description} \`\n- **Category:** \` ${res.category} \`\n- **Price:** \` ${res.price} \`\n- **Image URL:** ${res.image}`;
+	return `✅ **Product** \` ${res.title} \` **saved!**\n\n**Details:**\n- **Description:** \` ${res.description} \`\n- **Category:** \` ${res.category} \`\n- **Price:** \` ${pluginOptions.currency_symbol}${res.price} \`\n- **Image URL:** ${res.image}`;
 };

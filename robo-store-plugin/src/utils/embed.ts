@@ -37,7 +37,7 @@ export const genOrderEmbed = (order: OrderType): EmbedBuilder => {
 		.setAuthor({ name: `Buyer: ${order.buyer}` })
 		.setDescription(`Status: ${order.status.charAt(0).toUpperCase() + order.status.slice(1)}`)
 		.addFields(
-			{ name: 'Total Amount', value: `$${order.totalAmount.toFixed(2)}`, inline: true },
+			{ name: 'Total Amount', value: `${options.currency_symbol}${order.totalAmount.toFixed(2)}`, inline: true },
 			{ name: 'Payment Status', value: order.payment_done ? '✅ Completed' : '❌ Pending', inline: true },
 			{ name: 'Ordered At', value: order.orderedAt.toDateString(), inline: true },
 			{ name: 'Products', value: `${order.products}`, inline: true }

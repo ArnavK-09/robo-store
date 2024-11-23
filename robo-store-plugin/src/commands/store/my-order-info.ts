@@ -2,6 +2,7 @@
 import type { CommandConfig, CommandResult } from 'robo.js';
 import { Order, Product } from '../../database';
 import { AutocompleteInteraction, type CommandInteraction } from 'discord.js';
+import { options } from '../../events/_start';
 
 // Command Config
 export const config: CommandConfig = {
@@ -35,7 +36,7 @@ export default async (interaction: CommandInteraction): Promise<CommandResult> =
 	allProducts = allProducts.filter(Boolean);
 
 	return {
-		content: `📦 **Order Details:**\n\n**Order ID:** \`${res.primary_id}\`\n**Buyer:** \`${res.buyer}\` | <@${res.buyer}>\n**Payment Status:** \`${res.payment_done ? 'Completed' : 'Pending'}\`\n**Total Amount:** \`${res.totalAmount}\`\n**Status:** \`${res.status.toUpperCase()}\`\n**Ordered At:** \`${res.orderedAt.toLocaleString()}\`\n**Products:**${allProducts.map((x) => `\n- Name: \` ${x.product?.title}\` | Qty:- \` ${x.quantity} \` `)}`
+		content: `📦 **Order Details:**\n\n**Order ID:** \`${res.primary_id}\`\n**Buyer:** \`${res.buyer}\` | <@${res.buyer}>\n**Payment Status:** \`${res.payment_done ? 'Completed' : 'Pending'}\`\n**Total Amount:** \`${options.currency_symbol}${res.totalAmount}\`\n**Status:** \`${res.status.toUpperCase()}\`\n**Ordered At:** \`${res.orderedAt.toLocaleString()}\`\n**Products:**${allProducts.map((x) => `\n- Name: \` ${x.product?.title}\` | Qty:- \` ${x.quantity} \` `)}`
 	};
 };
 
