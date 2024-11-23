@@ -163,9 +163,9 @@ https://github.com/user-attachments/assets/2332de81-c31b-4415-b5fe-a887dd9c4f6f
 | ------------------------------------------------------------------------------------------------------------------------ |
 | ![Store My Order Info](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-screenshots/store_my-order-info.png) |
 
-| New Order Received Notification                                                                                                                 |
+| New Order Received Notification (admin pov)                                                                                                                |
 | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| ![New Order Received Notification (admin pov)](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-screenshots/new_order_recived_notification.png) |
+| ![New Order Received Notification](https://github.com/ArnavK-09/robo-store/blob/main/robo-store-screenshots/new_order_recived_notification.png) |
 
 | User Account on Storefront                                                                                                             |
 | -------------------------------------------------------------------------------------------------------------------------------------- |
