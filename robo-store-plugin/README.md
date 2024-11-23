@@ -20,7 +20,7 @@
 
 ## 🛠 Installation
 
-> You can add **robo-store** with one command via **Robo CLI**:
+> You can add [**robo-store**](https://www.npmjs.com/package/robo-store) with one command via **Robo CLI**:
 
 ###### terminal
 
